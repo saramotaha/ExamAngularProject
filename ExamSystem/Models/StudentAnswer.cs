@@ -1,13 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExamSystem.Models
 {
     public class StudentAnswer
     {
 
+        //[Key]
         public int ID { get; set; }
 
-        [ForeignKey("StudentExam")]
+        [ForeignKey("StudentExamId")]
         public int StudentId { get; set; }
         public StudentExam StudentExam { get; set; }
 
