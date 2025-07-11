@@ -1,4 +1,5 @@
 ﻿using ExamSystem.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,16 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<ExamContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddIdentity<AppUser, IdentityRole<int>>()
+    .AddEntityFrameworkStores<ExamContext>()
+    .AddDefaultTokenProviders();
+
+
+
+
+
+
 
 
 var app = builder.Build();
