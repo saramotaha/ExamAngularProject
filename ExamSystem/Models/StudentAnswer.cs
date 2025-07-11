@@ -11,18 +11,18 @@ namespace ExamSystem.Models
 
         [ForeignKey("StudentExamId")]
         public int StudentId { get; set; }
-        public StudentExam StudentExam { get; set; }
+        public virtual StudentExam StudentExam { get; set; }
 
         [ForeignKey("Question")]
         public int QuestionID { get; set; }
 
-        public Question Question { get; set; }
+        public virtual Question Question { get; set; }
 
 
         [ForeignKey("Answers")]
         public int AnswerSID { get; set; }
 
-        public Answers Answers { get; set; }
+        public virtual Answers Answers { get; set; }
 
     }
 }
