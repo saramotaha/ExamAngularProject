@@ -5,7 +5,7 @@ namespace ExamSystem.Repositories.Interfaces;
 
 public interface IQuestionRepo : IRepository<Question>
 {
-    Task<QuestionDto?> GetByIdWithAnswersAsync(int id);
+    Task<Question?> GetByIdWithAnswersAsync(int id);
 
     //Task<IEnumerable<Question>> GetByExamIdAsync(int examId);
     //Task<Question?> GetByIdAsync(int id);
