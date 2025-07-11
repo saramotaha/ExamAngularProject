@@ -20,5 +20,6 @@ namespace ExamSystem.Models
         public virtual Exam Exam { get; set; }
         public virtual List<Answers> Choices { get; set; }=new List<Answers>();
 
+
     }
 }
