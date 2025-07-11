@@ -37,7 +37,6 @@ builder.Services.AddIdentity<AppUser, IdentityRole<int>>()
 
 
 
-
 //builder.Services.AddScoped<IQuestionService, QuestionService>();
 //builder.Services.AddScoped<IQuestionRepo, QuestionRepo>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -58,5 +57,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();
