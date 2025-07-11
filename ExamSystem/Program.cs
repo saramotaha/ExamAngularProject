@@ -25,9 +25,6 @@ builder.Services.AddIdentity<AppUser, IdentityRole<int>>()
 
 
 
-
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,5 +40,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();
