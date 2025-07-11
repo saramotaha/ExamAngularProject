@@ -6,8 +6,7 @@ namespace ExamSystem.Models
 {
     public class ExamContext: IdentityDbContext<AppUser, IdentityRole<int>, int>
     {
-        
-
+      
         public ExamContext(DbContextOptions<ExamContext> options) : base(options)
         {
 

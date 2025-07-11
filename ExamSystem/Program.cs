@@ -1,4 +1,4 @@
-using ExamSystem.Models;
+﻿using ExamSystem.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
