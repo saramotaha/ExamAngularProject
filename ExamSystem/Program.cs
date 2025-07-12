@@ -4,6 +4,7 @@ using ExamSystem.Repositories.Interfaces;
 using ExamSystem.Services.Implementation;
 using ExamSystem.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using ExamSystem.Services.Mappers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -27,9 +28,16 @@ builder.Services.AddIdentity<AppUser, IdentityRole<int>>()
     .AddEntityFrameworkStores<ExamContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.AddAutoMapper(cfg => {
+
+    cfg.AddProfile<MappingConfig>();
+
+});
 
 builder.Services.AddScoped<IQuestionService, QuestionService>();
+builder.Services.AddScoped<IExamRepo, ExamRepo>();
 builder.Services.AddScoped<IQuestionRepo, QuestionRepo>();
+
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 
