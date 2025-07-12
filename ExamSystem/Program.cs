@@ -1,4 +1,8 @@
 ﻿using ExamSystem.Models;
+using ExamSystem.Repositories.Implementation;
+using ExamSystem.Repositories.Interfaces;
+using ExamSystem.Services.Implementation;
+using ExamSystem.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,7 +26,9 @@ builder.Services.AddIdentity<AppUser, IdentityRole<int>>()
     .AddDefaultTokenProviders();
 
 
-
+builder.Services.AddScoped<IQuestionService, QuestionService>();
+builder.Services.AddScoped<IQuestionRepo, QuestionRepo>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 
 var app = builder.Build();
