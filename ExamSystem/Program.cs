@@ -3,9 +3,11 @@ using ExamSystem.Repositories.Implementation;
 using ExamSystem.Repositories.Interfaces;
 using ExamSystem.Services.Implementation;
 using ExamSystem.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using ExamSystem.Services.Mappers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +39,30 @@ builder.Services.AddScoped<IExamRepo, ExamRepo>();
 builder.Services.AddScoped<IQuestionRepo, QuestionRepo>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.SaveToken = true;
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidateAudience = true,
+        ValidAudience = "https://localhost:4200",
+        ValidateIssuer = true,
+        ValidIssuer = "https://localhost:5026",
+        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Sara&Rawan7/11/2025ITITanta4MonthsThatIsOurChallange")),
+
+
+
+    };
+
+   });
 
 
 var app = builder.Build();
