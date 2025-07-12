@@ -23,20 +23,23 @@ namespace ExamSystem.Controllers
 
         public UserManager<AppUser> UserManager { get; }
 
+
+
+        [Authorize(Roles ="teacher")]
         [HttpPost]
         public async Task<IActionResult> AddExam(ExamDto examDto )
         {
             var user = await UserManager.GetUserAsync(User);
 
-           
 
-            //if(user == null)
-            //{
-            //    return BadRequest("User not found");
-            //}
 
-            //else
-            //{
+            if (user == null)
+            {
+                return BadRequest("User not found");
+            }
+
+            else
+            {
 
                 Exam _exam = new Exam()
                 {
@@ -44,7 +47,7 @@ namespace ExamSystem.Controllers
                     Description = examDto.Description,
                     Duration = examDto.Duration,
                     TotalScore = examDto.TotalScore,
-                    UsersId = 1
+                    UsersId = user.Id
                 };
 
                 exam.Exams.Add(_exam);
@@ -53,10 +56,10 @@ namespace ExamSystem.Controllers
 
                 return Ok("done");
 
-            //}
+            }
 
 
-               
+
 
 
 
@@ -78,16 +81,11 @@ namespace ExamSystem.Controllers
                 Duration = e.Duration,
                 TotalScore = e.TotalScore,
                 ID = e.ID
-            }
-
-
-            
-            ;
+            };
            return examDto;
 
 
         }
-
 
 
 
@@ -113,6 +111,7 @@ namespace ExamSystem.Controllers
 
 
 
+        [Authorize]
 
         [HttpGet]
 
@@ -139,6 +138,9 @@ namespace ExamSystem.Controllers
 
             return Ok(examDtos);
         }
+
+
+         
 
 
     }
