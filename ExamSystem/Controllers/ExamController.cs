@@ -25,6 +25,9 @@ namespace ExamSystem.Controllers
 
 
 
+        //Add Exam
+
+
         [Authorize(Roles ="teacher")]
         [HttpPost]
         public async Task<IActionResult> AddExam(ExamDto examDto )
@@ -67,9 +70,10 @@ namespace ExamSystem.Controllers
 
 
 
+        //Get Exam By Id
+
 
         [HttpGet("{id}")]
-
         public ExamDto GetExamById(int id)
         {
            Exam e=  exam.Exams.SingleOrDefault(e=>e.ID == id);
@@ -89,6 +93,11 @@ namespace ExamSystem.Controllers
 
 
 
+
+
+        //Edit Exam
+
+        [Authorize(Roles = "teacher")]
         [HttpPut]
         public IActionResult EditExam(int id , ExamDto examDto)
         {
@@ -111,10 +120,10 @@ namespace ExamSystem.Controllers
 
 
 
+        //Display all exams for the teacher
+
         [Authorize]
-
         [HttpGet]
-
         public IActionResult GetAllExams()
         {
             List<Exam> exams = exam.Exams.ToList();
@@ -140,7 +149,44 @@ namespace ExamSystem.Controllers
         }
 
 
-         
+
+
+
+        //Delete Exam
+
+        [Authorize(Roles = "teacher")]
+        [HttpDelete]
+        public IActionResult DeleteExam(int id)
+        {
+            if(id != null)
+            {
+                Exam ex = exam.Exams.FirstOrDefault(e => e.ID == id);
+
+                if (ex == null)
+                {
+                    return NotFound("Exam not found");
+                }
+
+                else
+                {
+                    exam.Exams.Remove(ex);
+                    exam.SaveChanges();
+                    return Ok("Exam deleted successfully");
+                }
+
+
+
+            }
+            else
+            {
+                return BadRequest("U Must Enter id It's Required");
+            }
+
+
+        }
+
+
+
 
 
     }
