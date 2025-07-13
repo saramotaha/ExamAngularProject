@@ -7,9 +7,11 @@ public interface IQuestionRepo : IRepository<Question>
 {
     Task<Question?> GetByIdWithAnswersAsync(int id);
 
-    //Task<IEnumerable<Question>> GetByExamIdAsync(int examId);
-    //Task<Question?> GetByIdAsync(int id);
-    //Task<Question> CreateAsync(Question question);
-    //Task<bool> UpdateAsync(int id, Question question);
-    //Task<bool> DeleteAsync(int id);
+    Task<IEnumerable<Question>> GetAllQuestionsByExamIdAsync(int examId);
+    Task<Question?> GetQuestionByIdAsync(int id);
+
+    Task DeleteAnswersAsync(IEnumerable<Answers> answers);
+    Task DeleteQuestionAsync(Question question);
+
+    Task<int> CountByExamIdAsync(int examId);
 }
