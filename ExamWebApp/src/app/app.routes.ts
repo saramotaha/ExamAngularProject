@@ -5,6 +5,7 @@ import { Register } from './Pages/register/register';
 import { Exam } from './Pages/exam/exam';
 import { AddExam } from './Components/add-exam/add-exam';
 import { AddQuestion } from './Components/add-question/add-question';
+import { ShowExam } from './Components/show-exam/show-exam';
 
 export const routes: Routes = [
   {path: '', redirectTo: "Home", pathMatch: "full" },
@@ -14,4 +15,5 @@ export const routes: Routes = [
   {path: 'Exam',component :Exam, pathMatch:"full"},
   {path: 'AddExam',component :AddExam, pathMatch:"full"},
   {path: 'AddQuestion/:id',component :AddQuestion, pathMatch:"full"},
+  {path: 'ShowExam/:id',component :ShowExam, pathMatch:"full"},
 ];
