@@ -58,13 +58,13 @@ export class Exam implements OnInit{
   ngOnInit(): void {
 
     this.AllExams();
-    this.ExamId =this.route.snapshot.paramMap.get('id');
+    // this.ExamId =this.route.snapshot.paramMap.get('id');
   }
 
 
 
   AddQuestion(examId: any) {
-    examId = this.ExamId;
+  this.ExamId=examId;
     this.router.navigate([`/AddQuestion/${examId}`]);
   }
 

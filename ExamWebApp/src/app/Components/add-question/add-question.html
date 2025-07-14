@@ -7,36 +7,40 @@
             </div>
 
             <div class="form-body">
-                <form id="mcqForm">
+                <form id="mcqForm"   [formGroup]="QuestionForm">
+
+
+                  <input type="text" formControlName="examId" hidden>
+
                     <div class="row">
                         <div class="col-12">
                             <div class="mb-3">
                                 <label for="question" class="form-label">Question <span class="required">*</span></label>
-                                <textarea class="form-control" id="question" name="question" rows="4" placeholder="Enter your question here..." required></textarea>
+                                <textarea formControlName="text" class="form-control" id="question" name="question" rows="4" placeholder="Enter your question here..." required></textarea>
                             </div>
                         </div>
                         <div class="col-12 my-2">
                             <div class="mb-3">
                                 <label for="questionDegree" class="form-label">Question Degree <span class="required">*</span></label>
-                                <input type="number" class="form-control" id="questionDegree" name="questionDegree" placeholder="Points" min="1" max="100" required>
+                                <input formControlName="degree" type="number" class="form-control" id="questionDegree" name="questionDegree" placeholder="Points" min="1" max="100" required>
                             </div>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Answer Options <span class="required">*</span></label>
-                        <div class="options-container">
-                            <div class="option-row">
+                        <div   class="options-container">
+                            <div class="option-row" >
                                 <div class="row align-items-center">
                                     <div class="col-1">
                                         <strong>A:</strong>
                                     </div>
                                     <div class="col-9">
-                                        <input type="text" class="form-control" name="optionA" placeholder="Enter option A" required>
+                                        <input formControlName="optionA" type="text" class="form-control" name="optionA" placeholder="Enter option A" required>
                                     </div>
                                     <div class="col-2">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="correctAnswer" id="correctA" value="A" required>
+                                            <input [(ngModel)]="correctAnswer" formControlName="correctAnswer" class="form-check-input" type="radio" name="correctAnswer" id="correctA" value="1" required>
                                             <label class="form-check-label" for="correctA">
                                                 Correct
                                             </label>
@@ -51,11 +55,11 @@
                                         <strong>B:</strong>
                                     </div>
                                     <div class="col-9">
-                                        <input type="text" class="form-control" name="optionB" placeholder="Enter option B" required>
+                                        <input formControlName="optionB" type="text" class="form-control" name="optionB" placeholder="Enter option B" required>
                                     </div>
                                     <div class="col-2">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="correctAnswer" id="correctB" value="B">
+                                            <input  [(ngModel)]="correctAnswer" formControlName="correctAnswer" class="form-check-input" type="radio" name="correctAnswer" id="correctB" value="2">
                                             <label class="form-check-label" for="correctB">
                                                 Correct
                                             </label>
@@ -70,11 +74,11 @@
                                         <strong>C:</strong>
                                     </div>
                                     <div class="col-9">
-                                        <input type="text" class="form-control" name="optionC" placeholder="Enter option C" required>
+                                        <input formControlName="optionC" type="text" class="form-control" name="optionC" placeholder="Enter option C" required>
                                     </div>
                                     <div class="col-2">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="correctAnswer" id="correctC" value="C">
+                                            <input   [(ngModel)]="correctAnswer" formControlName="correctAnswer" class="form-check-input" type="radio" name="correctAnswer" id="correctC" value="3">
                                             <label class="form-check-label" for="correctC">
                                                 Correct
                                             </label>
@@ -83,30 +87,13 @@
                                 </div>
                             </div>
 
-                            <div class="option-row">
-                                <div class="row align-items-center">
-                                    <div class="col-1">
-                                        <strong>D:</strong>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" class="form-control" name="optionD" placeholder="Enter option D" required>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="correctAnswer" id="correctD" value="D">
-                                            <label class="form-check-label" for="correctD">
-                                                Correct
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 
 
                     <div class="d-flex justify-content-center gap-3">
-                        <button type="submit" class="btn btn-custom">Save Question</button>
+                        <button (click)="SaveQuestion()" type="submit" class="btn btn-custom">Save Question</button>
                     </div>
                 </form>
 
