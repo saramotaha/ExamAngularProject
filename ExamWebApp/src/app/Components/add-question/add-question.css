@@ -1,0 +1,111 @@
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(30, 41, 59, 0.1);
+            overflow: hidden;
+        }
+
+        .form-header {
+            background: #1E293B;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .form-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .form-body {
+            padding: 40px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #1E293B;
+            margin-bottom: 8px;
+        }
+
+        .form-control:focus {
+            border-color: #1E293B;
+            box-shadow: 0 0 0 0.2rem rgba(30, 41, 59, 0.25);
+        }
+
+        .options-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .option-row {
+            margin-bottom: 15px;
+        }
+
+        .option-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-check-input:checked {
+            background-color: #1E293B;
+            border-color: #1E293B;
+        }
+
+        .form-check-input:focus {
+            box-shadow: 0 0 0 0.2rem rgba(30, 41, 59, 0.25);
+        }
+
+        .btn-custom {
+            background-color: #1E293B;
+            border-color: #1E293B;
+            color: white;
+            padding: 12px 30px;
+            font-weight: 600;
+        }
+
+        .btn-custom:hover {
+            background-color: #334155;
+            border-color: #334155;
+            color: white;
+        }
+
+        .btn-custom:focus {
+            box-shadow: 0 0 0 0.2rem rgba(30, 41, 59, 0.25);
+        }
+
+        .btn-outline-custom {
+            border-color: #1E293B;
+            color: #1E293B;
+            padding: 12px 30px;
+            font-weight: 600;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: #1E293B;
+            border-color: #1E293B;
+            color: white;
+        }
+
+        .success-message {
+            background: #10b981;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .required {
+            color: #dc3545;
+        }

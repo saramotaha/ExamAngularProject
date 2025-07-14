@@ -21,13 +21,15 @@ namespace ExamSystem.Controllers
 
         public IExamRepo Reps { get; }
         public IMapper _Map;
+        private readonly ExamContext context;
 
-        public ExamController(IMapper _map,IExamRepo _reps, UserManager<AppUser> userManager  ) //add imapper _map
+        public ExamController(IMapper _map,IExamRepo _reps, UserManager<AppUser> userManager  , ExamContext  context) //add imapper _map
         {
             //this.exam = exam;
             _Map = _map;
             Reps = _reps;
             UserManager = userManager;
+            this.context = context;
         }
 
         public UserManager<AppUser> UserManager { get; }
@@ -72,7 +74,7 @@ namespace ExamSystem.Controllers
            
             await Reps.SaveChangesAsync();
         
-            return Ok("done");
+            return Ok(new {message="done" });
         }
 
 
@@ -223,6 +225,8 @@ namespace ExamSystem.Controllers
         }
 
 
+
+
         [HttpDelete("{id:int}")]
         [EndpointDescription("We delete exam here ")]
         [EndpointSummary("delete Exam ")]
@@ -243,10 +247,21 @@ namespace ExamSystem.Controllers
             
             await  Reps.SaveChangesAsync();
             
-            return NoContent();
+            return Ok("Exam deleted successfully");
 
         }
 
 
+
+
+
+        [HttpGet("/GetByUserId/{id}")]
+
+        public IActionResult GetExamByUserId(int id)
+        {
+            List<Exam> Exams= context.Exams.Where(E=>E.UsersId == id).ToList();
+            return Ok(Exams);
+
+        }
     }
 }

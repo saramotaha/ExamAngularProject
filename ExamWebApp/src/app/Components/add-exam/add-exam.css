@@ -1,0 +1,31 @@
+
+    .exam-form {
+      max-width: 600px;
+      margin: 60px auto;
+      background: #ffffff;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-title {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #1E293B;
+      font-weight: bold;
+    }
+
+    label {
+      color: #1E293B;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background-color: #1E293B;
+      border-color: #1E293B;
+    }
+
+    .btn-primary:hover {
+      background-color: #0f172a;
+      border-color: #0f172a;
+    }
