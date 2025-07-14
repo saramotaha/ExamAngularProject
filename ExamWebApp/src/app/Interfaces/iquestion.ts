@@ -4,5 +4,5 @@ export interface IQuestion {
   text: string
   degree: number
   examId: number
-  options: IAnswer[]
+  choices: IAnswer[]
 }
