@@ -31,7 +31,6 @@ export class ExamService {
 
   AddExam(exam: IExam):Observable<any>{
    return this.http.post(`${this.BaseUrl}`, exam);
-
   }
 
 
