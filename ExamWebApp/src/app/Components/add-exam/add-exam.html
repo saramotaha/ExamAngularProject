@@ -1,0 +1,36 @@
+<br><br><br>
+<div class="container mt-5">
+  <div class="exam-form mt-5">
+    <h2 class="form-title">➕ Add New Exam</h2>
+    <form [formGroup]="registerForm">
+      <!-- Name -->
+      <div class="mb-3">
+        <label for="examName" class="form-label">Exam Name</label>
+        <input formControlName="name" type="text" class="form-control" id="examName" placeholder="Enter exam name" required />
+      </div>
+
+      <!-- Description -->
+      <div class="mb-3">
+        <label for="examDesc" class="form-label">Description</label>
+        <textarea formControlName="description" class="form-control" id="examDesc" rows="3" placeholder="Enter description" required></textarea>
+      </div>
+
+      <!-- Duration -->
+      <div class="mb-3">
+        <label for="examDuration" class="form-label">Duration (minutes)</label>
+        <input formControlName="duration" type="number" class="form-control" id="examDuration" placeholder="Enter duration" required />
+      </div>
+
+      <!-- Total Score -->
+      <div class="mb-3">
+        <label for="totalScore" class="form-label">Total Score</label>
+        <input formControlName="totalScore" type="number" class="form-control" id="totalScore" placeholder="Enter total score" required />
+      </div>
+
+      <!-- Submit Button -->
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary p-2 fs-5" (click)="createExam()">Create Exam</button>
+      </div>
+    </form>
+  </div>
+</div>
