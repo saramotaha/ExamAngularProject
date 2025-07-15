@@ -1,70 +1,60 @@
-<br><br>
 <div class="container mt-5">
-        <div class="exam-container mt-5">
+  <div class="exam-container mt-5">
+    <div class="exam-body">
+      <form id="examForm">
 
+<div class="exam-header">
+  <h1 class="p-2">Computer Science Exam</h1>
+  <div class="exam-info">
+    <span class="timer">Total Questions: 5</span>
+    <span class="timer" id="timer">Time: 30:00</span>
+  </div>
+</div>
 
-            <div class="exam-body">
-                <form id="examForm">
-
-                  @for(item of responseBody; track $index) {
-
-
-                    <div class="exam-header">
-                      <h1 class="p-2">Computer Science Exam</h1>
-                      <div class="exam-info">
-                        <span class="timer">Total Questions: 5</span>
-                        <span class="timer">Total Points: {{item.degree}}</span>
-                        <span class="timer" id="timer">Time: 30:00</span>
-                      </div>
-                    </div>
-
-
-                    <div class="question-card">
-                      <div class="question-header">
-                        <div class="question-number">{{$index+1}}</div>
-                        <div class="question-text">{{item.text}}</div>
-                      </div>
-
-
-                      @for (i of item.choices ; track $index) {
-
-                        <div class="options-list">
-                          <div class="option-item" >
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="q1" id="q1a" value="A">
-                              <label class="form-check-label" for="q1a">{{i.answerText}}</label>
-                            </div>
-                          </div>
-
-
-                        </div>
-                      }
-
-                    </div>
-
-                  }
-                    <!-- Question 1 -->
-
-
-
-                    <!-- Progress Bar -->
-                    <div class="mb-4">
-                        <div class="progress" style="height: 8px;">
-                            <div class="progress-bar" role="progressbar" style="width: 0%" id="progressBar"></div>
-                        </div>
-                        <small class="text-muted">Progress: <span id="progressText">0/5 questions answered</span></small>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-custom">Submit Exam</button>
-                    </div>
-                </form>
-
-                <div id="successMessage" class="success-message">
-                    <h4>Exam Submitted Successfully!</h4>
-                    <p>Your answers have been recorded. Results will be available shortly.</p>
-                </div>
-            </div>
-        </div>
+@for ( Ques of responseBody;let x= $index; track Ques.id ) {
+  <div>
+    <div class="question-header mt-5">
+      <div  class="question-number">{{$index+1}}</div>
+      <div  class="question-text">{{Ques.text}}</div>
+      <div  class="question-degree">{{Ques.degree}}</div>
     </div>
+
+      @for ( option of Ques.choices;  track option.id) {
+      <div class="options-list">
+        <div class="option-item">
+          <div class="form-check">
+            <input  class="form-check-input" type="radio" [name]="'QAnswer' + Ques.id "
+              [(ngModel)]="CorrectAnswer[x]"    [value]="option.answerText" />
+            <label   class="form-check-label">{{option.answerText}}</label>
+          </div>
+        </div>
+      </div>
+      }
+
+
+    </div>
+  }
+
+
+
+
+
+
+    <div class="mb-4">
+      <div class="progress" style="height: 8px;">
+        <div class="progress-bar" role="progressbar" style="width: 0%" id="progressBar"></div>
+      </div>
+      <small class="text-muted">Progress: <span id="progressText">0/5 questions answered</span></small>
+    </div>
+
+    <div class="text-center">
+      <button (click)="SubmitExam()" type="submit" class="btn btn-custom">Submit Exam</button>
+    </div>
+    </form>
+      <div id="successMessage" class="success-message">
+        <h4>Exam Submitted Successfully!</h4>
+        <p>Your answers have been recorded. Results will be available shortly.</p>
+      </div>
+    </div>
+  </div>
+</div>
