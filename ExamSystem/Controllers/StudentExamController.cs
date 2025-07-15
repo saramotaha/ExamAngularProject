@@ -3,6 +3,7 @@ using ExamSystem.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -58,15 +59,27 @@ namespace ExamSystem.Controllers
         }
 
 
-        [HttpGet]
+        //[HttpGet]
 
-        public IActionResult GetStudentExam(int id)
-        {
+        //public IActionResult GetStudentExam(int id)
+        //{
             
-            var AllStudExams = context.StudentExams.Where(s => s.UsersId == id).Select(new { UsersId =}).ToList();
+        //    var AllStudExams = context.StudentExams.Where(s => s.UsersId == id).Select(new { UsersId =}).ToList();
              
 
-            return Ok(AllStudExams);
+        //    return Ok(AllStudExams);
+        //}
+
+
+
+
+        [HttpGet("AllResults")]
+        public IActionResult GetAllResultsInEachExam()
+        {
+
+            List<UserExamDTO> AllResults = context.StudentExams.Include(x => x.Exam).ToList();
+            return Ok(AllResults);
         }
     }
+
 }
