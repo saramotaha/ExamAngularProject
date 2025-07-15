@@ -106,7 +106,7 @@ namespace ExamSystem.Controllers
                 UserName = userDto.Name
             };
 
-            var identityResult = await userManager.CreateAsync(user, userDto.PassWord);
+            var identityResult = await userManager.CreateAsync(user, userDto.Password);
 
             if (!identityResult.Succeeded)
                 return BadRequest(new { success = false, errors = identityResult.Errors });
