@@ -1,98 +1,167 @@
-.registration-form{
-	padding: 50px 0;
+/* Main container - lavender background */
+.registration-container {
+  padding-top: 80px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #f4f0ff; /* Soft lavender background */
+  padding-bottom: 2rem;
 }
 
-.registration-form form{
-    background-color: #fff;
-    max-width: 600px;
-    margin: auto;
-    padding: 50px 70px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+/* Card styling with enhanced shadow and green accents */
+.registration-card {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  border-radius: 16px; /* More rounded corners */
+  box-shadow: 0 10px 30px rgba(115, 81, 181, 0.2); /* Lavender-tinted shadow */
+  padding: 2.5rem;
+  margin-top: 1rem;
+  border: 1px solid #e6e0ff; /* Light lavender border */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.registration-form .form-icon{
-	text-align: center;
-    background-color: #5891ff;
-    border-radius: 50%;
-    font-size: 40px;
-    color: white;
-    width: 100px;
-    height: 100px;
-    margin: auto;
-    margin-bottom: 50px;
-    line-height: 100px;
+.registration-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(115, 81, 181, 0.25); /* Enhanced shadow on hover */
 }
 
-.registration-form .item{
-	border-radius: 20px;
-    margin-bottom: 25px;
-    padding: 10px 20px;
+/* Form title with green accent */
+.form-title {
+  color: #37b53b; /* Green color */
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 1.75rem;
+  text-shadow: 0 2px 4px rgba(76, 175, 80, 0.1);
 }
 
-.registration-form .create-account{
-    border-radius: 30px;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    background-color: #5791ff;
-    border: none;
-    color: white;
-    margin-top: 20px;
+/* Form groups */
+.form-group {
+  margin-bottom: 1.75rem;
+  position: relative;
 }
 
-.registration-form .social-media{
-    max-width: 600px;
-    background-color: #fff;
-    margin: auto;
-    padding: 35px 0;
-    text-align: center;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    color: #9fadca;
-    border-top: 1px solid #dee9ff;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+/* Labels with lavender icons */
+.static-label {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: #5e35b1; /* Dark lavender */
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
-.registration-form .social-icons{
-    margin-top: 30px;
-    margin-bottom: 16px;
+.static-label .icon {
+  color: #9575cd; /* Medium lavender */
+  margin-right: 0.5rem;
+  width: 1rem;
+  text-align: center;
 }
 
-.registration-form .social-icons a{
-    font-size: 23px;
-    margin: 0 3px;
-    color: #5691ff;
-    border: 1px solid;
-    border-radius: 50%;
-    width: 45px;
-    display: inline-block;
-    height: 45px;
-    text-align: center;
-    background-color: #fff;
-    line-height: 45px;
+/* Input fields with lavender focus */
+.form-control {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border: 1px solid #d1c4e9; /* Light lavender border */
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #f8f5ff; /* Very light lavender */
 }
 
-.registration-form .social-icons a:hover{
-    text-decoration: none;
-    opacity: 0.6;
+.form-control:focus {
+  border-color: #7e57c2; /* Medium-dark lavender */
+  box-shadow: 0 0 0 3px rgba(126, 87, 194, 0.2);
+  outline: none;
+  background-color: white;
 }
 
-@media (max-width: 576px) {
-    .registration-form form{
-        padding: 50px 20px;
-    }
-
-    .registration-form .form-icon{
-        width: 70px;
-        height: 70px;
-        font-size: 30px;
-        line-height: 70px;
-    }
+/* Error messages */
+.error-message {
+  color: #e53935; /* Keep red for errors */
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  padding-left: 1.75rem;
+  font-weight: 500;
 }
 
+/* Submit button - green accent */
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background-color: #4caf50; /* Green */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
+  box-shadow: 0 4px 6px rgba(76, 175, 80, 0.2);
+  letter-spacing: 0.5px;
+}
 
-body{
-    background-color: #dee9ff;
+.submit-btn:hover {
+  background-color: #43a047; /* Darker green */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(76, 175, 80, 0.25);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  background-color: #a5d6a7; /* Light green */
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Status messages */
+.status-message {
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  margin-top: 1.75rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.status-message .icon {
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.status-message.success {
+  background-color: #e8f5e9; /* Light green */
+  color: #2e7d32; /* Dark green */
+  border-left: 4px solid #4caf50;
+}
+
+.status-message.error {
+  background-color: #ffebee; /* Light red */
+  color: #c62828; /* Dark red */
+  border-left: 4px solid #e53935;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .registration-container {
+    padding-top: 70px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #f8f5ff; /* Slightly darker lavender on mobile */
+  }
+  
+  .registration-card {
+    padding: 1.75rem;
+    box-shadow: 0 8px 20px rgba(115, 81, 181, 0.15);
+  }
+  
+  .form-title {
+    font-size: 1.5rem;
+  }
 }
