@@ -1,248 +1,169 @@
- .registration-form {
-            width: 100%;
-            max-width: 520px;
-            padding: 30px 0;
-        }
 
-        .form-container {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
+/* Main container - lavender background */
+.registration-container {
+  padding-top: 80px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #f4f0ff; /* Soft lavender background */
+  padding-bottom: 2rem;
+}
 
-        .form-container:hover {
-            transform: translateY(-5px);
-        }
+/* Card styling with enhanced shadow and green accents */
+.registration-card {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  border-radius: 16px; /* More rounded corners */
+  box-shadow: 0 10px 30px rgba(115, 81, 181, 0.2); /* Lavender-tinted shadow */
+  padding: 2.5rem;
+  margin-top: 1rem;
+  border: 1px solid #e6e0ff; /* Light lavender border */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .form-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--accent));
-        }
+.registration-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(115, 81, 181, 0.25); /* Enhanced shadow on hover */
+}
 
-        .form-icon {
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary), #334155);
-            border-radius: 50%;
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 36px;
-            box-shadow: 0 5px 15px rgba(30, 41, 59, 0.3);
-        }
+/* Form title with green accent */
+.form-title {
+  color: #37b53b; /* Green color */
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 1.75rem;
+  text-shadow: 0 2px 4px rgba(76, 175, 80, 0.1);
+}
 
-        .registration-form h3 {
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 30px;
-            text-align: center;
-            position: relative;
-            padding-bottom: 15px;
-        }
+/* Form groups */
+.form-group {
+  margin-bottom: 1.75rem;
+  position: relative;
+}
 
-        .registration-form h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
+/* Labels with lavender icons */
+.static-label {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: #5e35b1; /* Dark lavender */
+  font-weight: 500;
+  font-size: 0.95rem;
+}
 
-        .form-floating {
-            position: relative;
-            margin-bottom: 22px;
-        }
+.static-label .icon {
+  color: #9575cd; /* Medium lavender */
+  margin-right: 0.5rem;
+  width: 1rem;
+  text-align: center;
+}
 
-        .form-floating label {
-            color: var(--gray);
-            padding-left: 40px;
-            transition: all 0.3s;
-        }
+/* Input fields with lavender focus */
+.form-control {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border: 1px solid #d1c4e9; /* Light lavender border */
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #f8f5ff; /* Very light lavender */
+}
 
-        .form-floating i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gray);
-            z-index: 10;
-            transition: color 0.3s;
-        }
+.form-control:focus {
+  border-color: #7e57c2; /* Medium-dark lavender */
+  box-shadow: 0 0 0 3px rgba(126, 87, 194, 0.2);
+  outline: none;
+  background-color: white;
+}
 
-        .form-control {
-            border: 2px solid #E2E8F0;
-            border-radius: 10px;
-            padding: 16px 20px 16px 45px;
-            height: 60px;
-            font-size: 16px;
-            transition: all 0.3s;
-            box-shadow: none;
-        }
+/* Error messages */
+.error-message {
+  color: #e53935; /* Keep red for errors */
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  padding-left: 1.75rem;
+  font-weight: 500;
+}
 
-        .form-control:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
-        }
+/* Submit button - green accent */
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background-color: #4caf50; /* Green */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
+  box-shadow: 0 4px 6px rgba(76, 175, 80, 0.2);
+  letter-spacing: 0.5px;
+}
 
-        .form-control:focus + label,
-        .form-control:not(:placeholder-shown) + label {
-            color: var(--accent);
-            transform: scale(0.85) translateY(-0.9rem) translateX(0.15rem);
-        }
+.submit-btn:hover {
+  background-color: #43a047; /* Darker green */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(76, 175, 80, 0.25);
+}
 
-        .form-control:focus ~ i {
-            color: var(--accent);
-        }
+.submit-btn:active {
+  transform: translateY(0);
+}
 
-        .password-strength {
-            height: 5px;
-            background: #E2E8F0;
-            border-radius: 3px;
-            margin-top: 5px;
-            overflow: hidden;
-            position: relative;
-        }
+.submit-btn:disabled {
+  background-color: #a5d6a7; /* Light green */
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
 
-        .password-strength::before {
-            content: '';
-            position: absolute;
-            height: 100%;
-            width: 0;
-            background:#1E293B;
-            transition: width 0.4s;
-        }
+/* Status messages */
+.status-message {
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  margin-top: 1.75rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
 
-        #password:focus ~ .password-strength::before {
-            width: 100%;
-        }
+.status-message .icon {
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+}
 
-        .form-check {
-            display: flex;
-            align-items: center;
-            margin: 25px 0;
-        }
+.status-message.success {
+  background-color: #e8f5e9; /* Light green */
+  color: #2e7d32; /* Dark green */
+  border-left: 4px solid #4caf50;
+}
 
-        .form-check-input {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-            accent-color: var(--accent);
-        }
+.status-message.error {
+  background-color: #ffebee; /* Light red */
+  color: #c62828; /* Dark red */
+  border-left: 4px solid #e53935;
+}
 
-        .form-check-label {
-            color: var(--primary);
-            font-size: 15px;
-        }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .registration-container {
+    padding-top: 70px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #f8f5ff; /* Slightly darker lavender on mobile */
+  }
+  
+  .registration-card {
+    padding: 1.75rem;
+    box-shadow: 0 8px 20px rgba(115, 81, 181, 0.15);
+  }
+  
+  .form-title {
+    font-size: 1.5rem;
+  }
+}
 
-        .form-check-label a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .form-check-label a:hover {
-            text-decoration: underline;
-        }
-
-        .btn-register {
-            background: linear-gradient(135deg, var(--accent));
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 16px;
-            font-weight: 600;
-            font-size: 18px;
-            width: 100%;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
-            cursor: pointer;
-        }
-
-        .btn-register:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(79, 70, 229, 0.4);
-        }
-
-        .btn-register:active {
-            transform: translateY(1px);
-        }
-
-        .login-link {
-            text-align: center;
-            margin-top: 25px;
-            color: var(--gray);
-            font-size: 15px;
-        }
-
-        .login-link a {
-            color: var(--accent);
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .login-link a:hover {
-            text-decoration: underline;
-        }
-
-        .form-select {
-            border: 2px solid #E2E8F0;
-            border-radius: 10px;
-            padding: 16px 20px 16px 45px;
-            height: 60px;
-            font-size: 16px;
-            transition: all 0.3s;
-            box-shadow: none;
-            background-position: right 15px center;
-        }
-
-        .form-select:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
-        }
-
-        @media (max-width: 576px) {
-            .form-container {
-                padding: 30px 20px;
-            }
-
-            .form-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 30px;
-            }
-
-            .registration-form h3 {
-                font-size: 1.5rem;
-            }
-        }
-
-        .input-group {
-            position: relative;
-        }
-
-        .password-toggle {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--gray);
-            cursor: pointer;
-            z-index: 10;
-        }
