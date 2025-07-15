@@ -50,7 +50,7 @@ export class Exam implements OnInit{
 
           this.AllExams();
           this.CDR.detectChanges();
-        //  this.Exams = this.Exams.filter(e => e.id !== id);
+         this.Exams = this.Exams.filter(e => e.id !== id);
 
 
       }

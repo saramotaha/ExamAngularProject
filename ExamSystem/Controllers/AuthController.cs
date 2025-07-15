@@ -117,6 +117,7 @@ namespace ExamSystem.Controllers
 
                             claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
                             claims.Add(new Claim(ClaimTypes.Name ,user.Name));
+                            claims.Add(new Claim(ClaimTypes.rol ,user.));
                             claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
                              var roles = await  userManager.GetRolesAsync(user);
 
