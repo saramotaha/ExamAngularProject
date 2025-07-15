@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-dashboard',
@@ -8,5 +11,20 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   styleUrl: './dashboard.css'
 })
 export class Dashboard {
+
+  constructor(private route :Router) { }
+
+
+  logOut() {
+    console.log("ssssssss");
+
+
+
+    localStorage.removeItem("token");
+    this.route.navigate(['/Login']);
+
+  }
+
+
 
 }

@@ -1,0 +1,37 @@
+<div class="table-container">
+  <div class="table-header mb-3">
+    Hi {{UserName}} 👋
+  </div>
+  <div class="table-header">
+    <i class="fas fa-table me-2"></i>Your Exams History
+  </div>
+  <div class="table-content">
+    <table class="scores-table">
+      <thead>
+        <tr>
+          <th>Exam</th>
+          <th>Description</th>
+          <th>Duration</th>
+          <th>Score</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of AllResult; track $index) {
+
+          <tr>
+            <td>{{item.exam.name}}</td>
+            <td>Core concepts and selectors</td>
+            <td>{{item.exam.duration}}</td>
+            <td><span class="subject-score score-excellent">{{item.score}}/{{item.exam.totalScore}}</span></td>
+            <td><span class="exam-status status-excellent">{{item.score>item.exam.totalScore/1.2?"Excellent":"Bad"}}</span></td>
+          </tr>
+
+
+
+        }
+
+      </tbody>
+    </table>
+  </div>
+</div>
