@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AddQuestionService } from '../../Services/add-question-service';
 import { IQuestion } from '../../Interfaces/iquestion';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
+import { response } from 'express';
 
 
 @Component({
   selector: 'app-add-question',
     standalone:true,
-  imports: [ReactiveFormsModule ],
+  imports: [ReactiveFormsModule],
   templateUrl: './add-question.html',
   styleUrl: './add-question.css',
 
@@ -20,7 +21,7 @@ export class AddQuestion implements OnInit {
   id!: number;
   correctAnswer: string = '';
   QuestionForm!: FormGroup;
-  constructor(private AddQues: AddQuestionService, private route: ActivatedRoute) {
+  constructor(private AddQues: AddQuestionService, private route: ActivatedRoute  ,private router:Router) {
   }
 
   ngOnInit(): void {
@@ -85,7 +86,13 @@ export class AddQuestion implements OnInit {
     if (this.QuestionForm.valid) {
 
       console.log(this.QuestionBody);
-      this.AddQues.AddQuestions(this.QuestionBody as IQuestion);
+      this.AddQues.AddQuestions(this.QuestionBody as IQuestion).subscribe({
+        next: () => {
+          this.router.navigate(['/Exam'])
+
+        }
+
+      });
 
 
 

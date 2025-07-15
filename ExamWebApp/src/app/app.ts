@@ -5,10 +5,11 @@ import { Nav } from "./LayOut/nav/nav";
 import { Footer } from "./LayOut/footer/footer";
 import { ExamService } from './Services/exam-service';
 import { error, log } from 'console';
+import { Dashboard } from "./LayOut/dashboard/dashboard";
 
 @Component({
   selector: 'app-root',
-  imports: [Nav, Footer, RouterOutlet],
+  imports: [ Dashboard],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

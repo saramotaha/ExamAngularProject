@@ -1,0 +1,186 @@
+body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .exam-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(30, 41, 59, 0.1);
+            overflow: hidden;
+        }
+
+        .exam-header {
+            background: #1E293B;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .exam-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .exam-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+
+        .exam-body {
+            padding: 40px;
+        }
+
+        .question-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .question-card:hover {
+            box-shadow: 0 5px 15px rgba(30, 41, 59, 0.1);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .question-number {
+            background: #1E293B;
+            color: white;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .question-text {
+            flex: 1;
+            font-weight: 500;
+            color: #1E293B;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        .question-degree {
+            background: #1E293B;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-left: 15px;
+            white-space: nowrap;
+        }
+
+        .options-list {
+            margin-top: 20px;
+        }
+
+        .option-item {
+            margin-bottom: 12px;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .option-item:hover {
+            border-color: #1E293B;
+            background: #f8f9fa;
+        }
+
+        .option-item.selected {
+            border-color: #1E293B;
+            background: rgba(30, 41, 59, 0.1);
+        }
+
+        .form-check-input:checked {
+            background-color: #1E293B;
+            border-color: #1E293B;
+        }
+
+        .form-check-input:focus {
+            box-shadow: 0 0 0 0.2rem rgba(30, 41, 59, 0.25);
+        }
+
+        .form-check-label {
+            cursor: pointer;
+            font-weight: 500;
+            color: #495057;
+            margin-left: 8px;
+        }
+
+        .btn-custom {
+            background-color: #1E293B;
+            border-color: #1E293B;
+            color: white;
+            padding: 12px 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .btn-custom:hover {
+            background-color: #334155;
+            border-color: #334155;
+            color: white;
+        }
+
+        .btn-custom:focus {
+            box-shadow: 0 0 0 0.2rem rgba(30, 41, 59, 0.25);
+        }
+
+        .progress-bar {
+            background-color: #1E293B;
+        }
+
+        .timer {
+            background: #dc3545;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .success-message {
+            background: #10b981;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .exam-info {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .exam-body {
+                padding: 20px;
+            }
+
+            .question-card {
+                padding: 20px;
+            }
+        }

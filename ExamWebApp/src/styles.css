@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+            --sidebar-bg: #1E293B;
+            --sidebar-text: #F1F5F9;
+            --sidebar-hover: #334155;
+            --sidebar-active: #0F172A;
+            --sidebar-icon: #94A3B8;
+            --sidebar-header: #CBD5E1;
+            --sidebar-divider: #334155;
+            --primary: #6366F1;
+
+
+            --primary-color: #1E293B;
+            --accent-color: #1E293B;
+            --light-color: #F1F5F9;
+            --gray-color: #94A3B8;
+            --success-color: #10B981;
+
+
+             --primary: #1E293B;
+            --accent: #1E293B;
+            --light: #F1F5F9;
+            --gray: #94A3B8;
+            --dark: #0F172A;
+            --success: #10B981;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+            margin: 0;
+            padding: 0;
+        }
