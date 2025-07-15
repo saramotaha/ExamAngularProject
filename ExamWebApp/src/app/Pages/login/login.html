@@ -1,6 +1,8 @@
 <div class="container justify-content-center d-flex">
   <div class="registration-form">
-    <form>
+
+    <form  [formGroup]="loginForm">
+
       <div class="form-icon">
         <i class="fas fa-user-shield"></i>
       </div>
@@ -9,13 +11,18 @@
 
       <div class="form-floating mb-4">
         <i class="fas fa-envelope"></i>
-        <input type="email" class="form-control" id="email" placeholder="Email">
+
+        <input formControlName="email" type="email" class="form-control" id="email" placeholder="Email">
+
+
         <label for="email">Email Address</label>
       </div>
 
       <div class="form-floating mb-3">
         <i class="fas fa-lock"></i>
-        <input type="password" class="form-control" id="password" placeholder="Password">
+
+        <input formControlName="passWord" type="password" class="form-control" id="password" placeholder="Password">
+
         <label for="password">Password</label>
       </div>
 
@@ -28,7 +35,11 @@
       </div>
 
       <div class="btn-container">
-        <button type="button" class="btn btn-login">
+
+        <button type="button" class="btn btn-login"  (click)="LoginToDashBoard()">
+
+       
+
           <i class="fas fa-sign-in-alt"></i> Login
         </button>
         <button  [routerLink]="['/Register']" type="button" class="btn btn-register">
@@ -41,7 +52,9 @@
 
 
       <div class="signup-link">
-        Don't have an account? <a href="#">Sign up now</a>
+        Don't have an account? <a [routerLink]="['/Register']">Sign up now</a>
+
+
       </div>
     </form>
   </div>

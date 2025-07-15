@@ -1,0 +1,206 @@
+<div class="dashboard-container">
+  <!-- Header -->
+  <!-- <header class="dashboard-header">
+    <div class="logo">
+      <div class="logo-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <div>
+        <h1 style="font-size: 24px;">Student Exam Dashboard</h1>
+        <p style="color: #cbd5e1; font-size: 14px; margin-top: 5px;">Track performance across multiple exams</p>
+      </div>
+    </div>
+    <div class="user-info">
+      <div class="text-end">
+        <div class="fw-bold">Dr. Sarah Johnson</div>
+        <div class="small" style="color: #94a3b8;">Mathematics Department</div>
+      </div>
+      <div class="user-avatar">SJ</div>
+    </div>
+  </header> -->
+
+
+  <h1 style="font-size: 24px;" class="mb-2">All Students Scores </h1>
+  <!-- Scores -->
+  <div class="stats-container">
+    <div class="stat-card">
+      <i class="fas fa-users"></i>
+      <div class="card-title">Total Students</div>
+      <div class="card-value">42</div>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-chart-line"></i>
+      <div class="card-title">Class Average</div>
+      <div class="card-value">78.6%</div>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-trophy"></i>
+      <div class="card-title">Highest Score</div>
+      <div class="card-value">98%</div>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-book"></i>
+      <div class="card-title">Exams Completed</div>
+      <div class="card-value">7</div>
+    </div>
+  </div>
+
+  <!-- Student Exams Section -->
+  <h2 class="section-title">Student Exams</h2>
+  <div class="exam-cards">
+    <!-- Emma Johnson Exams -->
+    @for (item of AllScores; track $index) {
+
+      <div class="exam-card">
+        <div class="exam-header">
+          <div class="student-info">
+            <div class="student-avatar">{{item.exam.name}}</div>
+            <div class="student-avatar">{{item.usersId}}</div>
+            <div class="exam-title">{{userName}}</div>
+          </div>
+
+        </div>
+        <div class="exam-score">{{item.score/item.exam.totalScore*100}} %</div>
+        <div class="exam-status status-good">{{item.score>(item.exam.totalScore)?'Excellent Performance':'Bad Performance'}}</div>
+      </div>
+
+
+
+    }
+
+
+
+  </div>
+
+  <!-- Detailed Scores Table -->
+  <!-- <h2 class="section-title">Detailed Exam Results</h2>
+  <div class="student-container">
+    <div class="controls">
+      <div class="d-flex gap-2 flex-grow-1">
+        <input type="text" class="form-control form-control-dashboard" placeholder="Search students...">
+        <select class="form-select form-control-dashboard w-auto">
+          <option>All Classes</option>
+          <option>Grade 10-A</option>
+          <option>Grade 10-B</option>
+          <option>Grade 10-C</option>
+        </select>
+        <select class="form-select form-control-dashboard w-auto">
+          <option>All Exams</option>
+          <option selected>Midterm Exams</option>
+          <option>Final Exams</option>
+          <option>Quarterly Tests</option>
+        </select>
+      </div>
+      <button class="btn btn-dashboard">
+        <i class="fas fa-download me-2"></i>Export Report
+      </button>
+    </div>
+
+    <div class="table-container">
+      <table class="scores-table">
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Math</th>
+            <th>Science</th>
+            <th>English</th>
+            <th>History</th>
+            <th>Arts</th>
+            <th>Overall</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="student-info">
+                <div class="student-avatar">EJ</div>
+                <div>
+                  <div>Emma Johnson</div>
+                  <div class="small" style="color: #64748B;">Midterm Exam</div>
+                </div>
+              </div>
+            </td>
+            <td><span class="subject-score score-excellent">92%</span></td>
+            <td><span class="subject-score score-good">87%</span></td>
+            <td><span class="subject-score score-excellent">95%</span></td>
+            <td><span class="subject-score score-average">78%</span></td>
+            <td><span class="subject-score score-good">85%</span></td>
+            <td><span class="subject-score score-good">87.4%</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="student-info">
+                <div class="student-avatar">MR</div>
+                <div>
+                  <div>Michael Rodriguez</div>
+                  <div class="small" style="color: #64748B;">Final Exam</div>
+                </div>
+              </div>
+            </td>
+            <td><span class="subject-score score-excellent">96%</span></td>
+            <td><span class="subject-score score-excellent">94%</span></td>
+            <td><span class="subject-score score-excellent">93%</span></td>
+            <td><span class="subject-score score-good">89%</span></td>
+            <td><span class="subject-score score-excellent">92%</span></td>
+            <td><span class="subject-score score-excellent">92.8%</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="student-info">
+                <div class="student-avatar">SC</div>
+                <div>
+                  <div>Sophia Chen</div>
+                  <div class="small" style="color: #64748B;">Quarterly Test</div>
+                </div>
+              </div>
+            </td>
+            <td><span class="subject-score score-excellent">98%</span></td>
+            <td><span class="subject-score score-excellent">97%</span></td>
+            <td><span class="subject-score score-excellent">96%</span></td>
+            <td><span class="subject-score score-excellent">94%</span></td>
+            <td><span class="subject-score score-good">88%</span></td>
+            <td><span class="subject-score score-excellent">94.6%</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="student-info">
+                <div class="student-avatar">DW</div>
+                <div>
+                  <div>David Wilson</div>
+                  <div class="small" style="color: #64748B;">Midterm Exam</div>
+                </div>
+              </div>
+            </td>
+            <td><span class="subject-score score-good">82%</span></td>
+            <td><span class="subject-score score-average">76%</span></td>
+            <td><span class="subject-score score-good">85%</span></td>
+            <td><span class="subject-score score-poor">68%</span></td>
+            <td><span class="subject-score score-average">74%</span></td>
+            <td><span class="subject-score score-average">77.0%</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="student-info">
+                <div class="student-avatar">OP</div>
+                <div>
+                  <div>Olivia Parker</div>
+                  <div class="small" style="color: #64748B;">Final Exam</div>
+                </div>
+              </div>
+            </td>
+            <td><span class="subject-score score-excellent">91%</span></td>
+            <td><span class="subject-score score-good">86%</span></td>
+            <td><span class="subject-score score-excellent">93%</span></td>
+            <td><span class="subject-score score-good">84%</span></td>
+            <td><span class="subject-score score-excellent">90%</span></td>
+            <td><span class="subject-score score-good">88.8%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> -->
+
+  <div class="footer">
+    <p>Student Exam Dashboard • Data updated: July 15, 2025</p>
+  </div>
+</div>

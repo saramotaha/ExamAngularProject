@@ -7,6 +7,11 @@ import { AddExam } from './Components/add-exam/add-exam';
 import { AddQuestion } from './Components/add-question/add-question';
 import { ShowExam } from './Components/show-exam/show-exam';
 import { DashBoardHome } from './Components/dash-board-home/dash-board-home';
+import { ShowStudentScores } from './Services/show-student-scores';
+import { StudentsScores } from './Pages/students-scores/students-scores';
+import { StudentScoreInHisExam } from './Pages/student-score-in-his-exam/student-score-in-his-exam';
+
+
 
 export const routes: Routes = [
   {path: '', redirectTo: "Login", pathMatch: "full" },
@@ -18,4 +23,7 @@ export const routes: Routes = [
   {path: 'AddQuestion/:id',component :AddQuestion, pathMatch:"full"},
   {path: 'ShowExam/:id',component :ShowExam, pathMatch:"full"},
   {path: 'DashBoardHome',component :DashBoardHome, pathMatch:"full"},
+  {path: 'StudentsScores',component :StudentsScores, pathMatch:"full"},
+  {path: 'StudentScoreInHisExam',component :StudentScoreInHisExam, pathMatch:"full"},
+
 ];

@@ -10,6 +10,10 @@ import { log } from 'node:console';
 import { StudentExamService } from '../../Services/student-exam-service';
 import { IStudentExam } from '../../Interfaces/istudent-exam';
 
+import { ExamService } from '../../Services/exam-service';
+import { IExam } from '../../Interfaces/iexam';
+
+
 @Component({
   selector: 'app-show-exam',
   imports: [FormsModule , CommonModule],
@@ -24,11 +28,15 @@ export class ShowExam implements OnInit {
 
   choices!: IAnswer[];
 
-  constructor(private http: HttpClient, private questions: GetQuestionsOfExam , private route:ActivatedRoute  , private studentExam:StudentExamService) { }
+
+  constructor(private http: HttpClient, private questions: GetQuestionsOfExam , private route:ActivatedRoute  , private studentExam:StudentExamService , private examById:ExamService) { }
 
 
 
   ExamID!: number;
+
+  Exam!: IExam;
+
   SubmitExamForm!: FormGroup;
   sum: number = 0;
 
@@ -38,9 +46,33 @@ export class ShowExam implements OnInit {
 
 
   ngOnInit(): void {
-    this.ExamID = +this.route.snapshot.paramMap.get('id')!;
-    this.questions.GetQuestionsByExamId(this.ExamID).subscribe({
-      next: (response) => {
+  this.ExamID = +this.route.snapshot.paramMap.get('id')!;
+
+  this.questions.GetQuestionsByExamId(this.ExamID).subscribe({
+    next: (response) => {
+      this.responseBody = response;
+      this.CorrectAnswer = new Array(this.responseBody.length).fill('');
+    },
+    error: (err) => {
+      console.error("❌ Error loading questions:", err);
+    }
+  });
+}
+
+
+
+  getUserDataFromToken() {
+  const token = localStorage.getItem('token');
+
+  if (!token) return null;
+
+  const payload = token.split('.')[1];
+  const decodedPayload = atob(payload);
+
+  return JSON.parse(decodedPayload);
+}
+
+
 
         this.responseBody = response;
         console.log(response);
@@ -76,6 +108,63 @@ export class ShowExam implements OnInit {
   }
 
 
+
+
+
+
+ SubmitExam() {
+  const user = this.getUserDataFromToken();
+  if (!user || !this.responseBody || this.responseBody.length === 0) return;
+
+  console.log("User Answers:", this.CorrectAnswer);
+
+  this.sum = 0;
+
+  for (let i = 0; i < this.responseBody.length; i++) {
+    const question = this.responseBody[i];
+    const correctAnswer = question.choices.find(c => c.isCorrect)?.answerText;
+    const selected = this.CorrectAnswer[i];
+
+    if (selected === correctAnswer) {
+      this.sum += question.degree;
+      console.log(`Question ${i + 1}: ✅ Correct`);
+    } else {
+      console.log(`Question ${i + 1}: ❌ Wrong`);
+    }
+  }
+
+  console.log("Total Score:", this.sum);
+
+  // ✅ نجيب بيانات الامتحان بعد ما نحسب الدرجة
+  this.examById.GetExamsOfUser(this.ExamID).subscribe({
+    next: (exam) => {
+      const studentExam: IStudentExam = {
+        score: this.sum,
+        examId: this.ExamID,
+        usersId: user.id,
+        exam: {
+          name: exam.name,
+          description: exam.description,
+          duration: exam.duration,
+          totalScore: exam.totalScore
+        }
+      };
+
+      this.studentExam.AddStudentExam(studentExam).subscribe({
+        next: () => {
+          console.log("✅ Exam Submitted Successfully!");
+          alert("Exam Submitted Successfully!");
+        },
+        error: (err) => {
+          console.error("❌ Error submitting exam:", err);
+        }
+      });
+    },
+    error: (err) => {
+      console.error("❌ Error loading exam details:", err);
+    }
+  });
+}
 
 
 

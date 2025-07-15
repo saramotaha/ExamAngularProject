@@ -92,6 +92,9 @@ namespace ExamSystem.Controllers
 
             List<UserExamDTO> AllResults = context.StudentExams.Include(s => s.Exam).Select(s=>new UserExamDTO()
             {
+
+                Id=s.Id,
+
                 UsersId= s.UsersId,
                 ExamId= s.ExamId,
                 score=s.score,

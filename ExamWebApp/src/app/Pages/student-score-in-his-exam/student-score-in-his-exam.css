@@ -1,0 +1,116 @@
+/* Table Styles */
+        .table-container {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 40px;
+        }
+
+        .table-header {
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .table-content {
+            padding: 25px;
+        }
+
+        .scores-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .scores-table th {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--dark);
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .scores-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .scores-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .scores-table tr:hover td {
+            background: #f8f9fa;
+        }
+
+        .subject-score {
+            display: inline-block;
+            min-width: 60px;
+            text-align: center;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .score-excellent {
+            background: rgba(76, 201, 240, 0.2);
+            color: #0a9396;
+        }
+
+        .score-good {
+            background: rgba(72, 149, 239, 0.2);
+            color: #4361ee;
+        }
+
+        .score-average {
+            background: rgba(255, 183, 3, 0.2);
+            color: #f8961e;
+        }
+
+        .score-poor {
+            background: rgba(239, 71, 111, 0.2);
+            color: #e63946;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            color: #6c757d;
+            font-size: 15px;
+            border-top: 1px solid #e9ecef;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .user-info {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .exam-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+        }

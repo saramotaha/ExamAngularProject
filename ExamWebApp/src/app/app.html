@@ -1,4 +1,9 @@
 
+
+<div class="d-flex container-fluid justify-content-start mt-0 p-0">
+  @if(flag==true){
+  <app-dashboard></app-dashboard>
+
 <!-- <app-nav></app-nav> -->
 <app-dashboard></app-dashboard>
 <!-- <router-outlet></router-outlet> -->
@@ -20,6 +25,12 @@
 
 
 
+  }
 
 
 
+
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
