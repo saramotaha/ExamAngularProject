@@ -1,21 +1,47 @@
-<div class="container mt-5">
+<div class="container justify-content-center d-flex">
   <div class="registration-form">
     <form>
-      <h3 class="text-center mb-4 text-primary">Login Now</h3>
+      <div class="form-icon">
+        <i class="fas fa-user-shield"></i>
+      </div>
 
-      <div class="form-floating mb-3">
+      <h3>Login to Your Account</h3>
+
+      <div class="form-floating mb-4">
+        <i class="fas fa-envelope"></i>
         <input type="email" class="form-control" id="email" placeholder="Email">
-        <label for="email"><i class="fas fa-envelope me-2"></i>Email</label>
+        <label for="email">Email Address</label>
       </div>
 
       <div class="form-floating mb-3">
+        <i class="fas fa-lock"></i>
         <input type="password" class="form-control" id="password" placeholder="Password">
-        <label for="password"><i class="fas fa-lock me-2"></i>Password</label>
+        <label for="password">Password</label>
+      </div>
+
+      <div class="additional-options">
+        <div class="remember-me">
+          <input type="checkbox" id="remember">
+          <label for="remember">Remember me</label>
+        </div>
+        <a href="#" class="forgot-password">Forgot Password?</a>
+      </div>
+
+      <div class="btn-container">
+        <button type="button" class="btn btn-login">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+        <button  [routerLink]="['/Register']" type="button" class="btn btn-register">
+          <i class="fas fa-user-plus"></i> Register
+        </button>
       </div>
 
 
-      <div class="d-grid">
-        <button type="button" class="btn btn-outline-primary rounded-5 fs-5 p-2">Login</button>
+
+
+
+      <div class="signup-link">
+        Don't have an account? <a href="#">Sign up now</a>
       </div>
     </form>
   </div>
