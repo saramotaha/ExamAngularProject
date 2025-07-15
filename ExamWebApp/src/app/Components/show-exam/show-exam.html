@@ -19,7 +19,11 @@
       <div  class="question-degree">{{Ques.degree}}</div>
     </div>
 
+
       @for ( option of Ques.choices; let y= $index;  track option.id) {
+
+      @for ( option of Ques.choices;  track option.id) {
+
       <div class="options-list">
         <div class="option-item">
           <div class="form-check">

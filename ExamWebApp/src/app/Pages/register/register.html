@@ -1,61 +1,98 @@
-<div class="container d-flex justify-content-center ">
-  <div class="registration-form ">
-    <div class="form-container ">
-      <div class="form-icon">
-        <i class="fas fa-user-plus"></i>
+<div class="registration-container">
+  <div class="registration-card">
+    <form [formGroup]="form" (ngSubmit)="register()" class="registration-form">
+      <h3 class="form-title">Create Your Account</h3>
+
+      <!-- Username Field -->
+      <div class="form-group">
+        <label for="username" class="static-label">
+          <i class="fas fa-user icon"></i> Username
+        </label>
+        <input
+          id="username"
+          type="text"
+          class="form-control"
+          formControlName="Name"
+        />
+        <div class="error-message" *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+          Name is required
+        </div>
       </div>
 
-      <h3>Create Your Account</h3>
-
-      <form>
-        <div class="form-floating">
-          <i class="fas fa-user"></i>
-          <input type="text" class="form-control" id="username" placeholder="Username">
-          <label for="username">Username</label>
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email" class="static-label">
+          <i class="fas fa-envelope icon"></i> Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          class="form-control"
+          formControlName="Email"
+        />
+        <div class="error-message" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+          <div *ngIf="form.get('email')?.errors?.['required']">Email is required</div>
+          <div *ngIf="form.get('email')?.errors?.['email']">Please enter a valid email</div>
         </div>
+      </div>
 
-        <div class="form-floating">
-          <i class="fas fa-envelope"></i>
-          <input type="email" class="form-control" id="email" placeholder="Email">
-          <label for="email">Email Address</label>
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password" class="static-label">
+          <i class="fas fa-lock icon"></i> Password
+        </label>
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          formControlName="Password"
+        />
+        <div class="error-message" *ngIf="form.get('passWord')?.touched && form.get('passWord')?.invalid">
+          Password is required
         </div>
+      </div>
 
-        <div class="form-floating">
-          <i class="fas fa-lock"></i>
-          <input type="password" class="form-control" id="password" placeholder="Password">
-          <label for="password">Password</label>
-          <div class="password-strength"></div>
+      <!-- Confirm Password Field -->
+      <div class="form-group">
+        <label for="confirmPassword" class="static-label">
+          <i class="fas fa-lock icon"></i> Confirm Password
+        </label>
+        <input
+          id="confirmPassword"
+          type="password"
+          class="form-control"
+          formControlName="ConfirmPassword"
+        />
+        <div class="error-message" *ngIf="form.get('confirmPassword')?.touched && form.get('confirmPassword')?.invalid">
+          Please confirm your password
         </div>
-
-        <div class="form-floating">
-          <i class="fas fa-lock"></i>
-          <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
-          <label for="confirmPassword">Confirm Password</label>
+        <div class="error-message" *ngIf="form.get('passWord')?.value !== form.get('confirmPassword')?.value && form.get('confirmPassword')?.touched">
+          Passwords don't match
         </div>
+      </div>
 
-        <div class="form-floating mb-4">
-          <i class="fas fa-user-tag"></i>
-          <select class="form-select" id="role" name="role">
-            <option value="">Select your role</option>
-            <option value="teacher">Teacher</option>
-            <option value="student">Student</option>
-          </select>
-          <label for="role">Account Type</label>
-        </div>
+      <!-- Role Field -->
+      <div class="form-group">
+        <label for="role" class="static-label">
+          <i class="fas fa-user-tag icon"></i> Role
+        </label>
+        <select class="form-control" id="role" formControlName="role">
+          <option value="Student">Student</option>
+        </select>
+      </div>
 
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="terms">
-          <label class="form-check-label" for="terms">
-            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
-          </label>
-        </div>
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn" [disabled]="form.invalid">
+        Register Now
+      </button>
 
-        <button type="button" class="btn-register"><i class="fas fa-user-plus"></i>Create Account</button>
-
-        <div class="login-link">
-          Already have an account? <a href="#">Sign in</a>
-        </div>
-      </form>
-    </div>
+      <!-- Status Messages -->
+      <div class="status-message success" *ngIf="successMessage">
+        <i class="fas fa-check-circle icon"></i> {{ successMessage }}
+      </div>
+      <div class="status-message error" *ngIf="errorMessage">
+        <i class="fas fa-exclamation-circle icon"></i> {{ errorMessage }}
+      </div>
+    </form>
   </div>
 </div>

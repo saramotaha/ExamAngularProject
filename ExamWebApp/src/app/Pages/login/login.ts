@@ -7,6 +7,7 @@ import { FormControl, FormControlName, FormGroup, FormsModule, ReactiveFormsModu
 @Component({
   selector: 'app-login',
   imports: [RouterLink , ReactiveFormsModule],
+
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
