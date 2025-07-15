@@ -1,25 +1,14 @@
 
-<!-- <app-nav></app-nav> -->
-<app-dashboard></app-dashboard>
-<!-- <router-outlet></router-outlet> -->
-<!-- <app-footer></app-footer> -->
-<!-- <app-exam></app-exam> -->
- <!-- <app-add-question></app-add-question> -->
+<div class="d-flex container-fluid justify-content-start mt-0 p-0">
+  @if(flag==true){
+  <app-dashboard></app-dashboard>
+
+  }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

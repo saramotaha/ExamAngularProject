@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Home } from "./Pages/home/home";
 import { Nav } from "./LayOut/nav/nav";
@@ -6,17 +6,20 @@ import { Footer } from "./LayOut/footer/footer";
 import { ExamService } from './Services/exam-service';
 import { error, log } from 'console';
 import { Dashboard } from "./LayOut/dashboard/dashboard";
+import { Login } from "./Pages/login/login";
+import { Register } from "./Pages/register/register";
 
 @Component({
   selector: 'app-root',
-  imports: [ Dashboard],
+  imports: [Dashboard, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
   protected title = 'ExamWebApp';
+  flag: boolean=false;
 
-  constructor(exam: ExamService) {
+  constructor(exam: ExamService ,private c:ChangeDetectorRef) {
 
     exam.GetAllExams().subscribe(
       {
@@ -27,6 +30,15 @@ export class App {
     }
 
     )
+
+
+
+
+  }
+  ngOnInit(): void {
+    this.flag = localStorage.getItem('token') != null ? true : false;
+    console.log(this.flag);
+    this.c.detectChanges();
 
   }
 }

@@ -17,7 +17,7 @@ export class ExamService {
   }
 
 
-  GetExamsOfUser(id: number) {
+  GetExamsOfUser(id: number):Observable<any> {
 
    return this.http.get(`${this.BaseUrl}/${id}`)
 
