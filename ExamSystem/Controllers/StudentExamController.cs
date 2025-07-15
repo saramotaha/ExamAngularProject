@@ -59,16 +59,29 @@ namespace ExamSystem.Controllers
         }
 
 
-        //[HttpGet]
+        [HttpGet("{id}")]
 
-        //public IActionResult GetStudentExam(int id)
-        //{
-            
-        //    var AllStudExams = context.StudentExams.Where(s => s.UsersId == id).Select(new { UsersId =}).ToList();
-             
+        public IActionResult GetStudentExam(int id)
+        {
 
-        //    return Ok(AllStudExams);
-        //}
+            List<UserExamDTO> AllStudExams = context.StudentExams.Where(s => s.UsersId == id).Include(s=>s.Exam).Select(s=>new UserExamDTO()
+            {
+                ExamId = s.ExamId,
+                UsersId = s.UsersId,
+                score=s.score,
+                Exam=new ExamDto()
+                {
+                    Name=s.Exam.Name,
+                    Duration=s.Exam.Duration,
+                    Description=s.Exam.Description,
+                    TotalScore=s.score
+                    
+                }
+            }).ToList();
+
+
+            return Ok(AllStudExams);
+        }
 
 
 
@@ -77,7 +90,20 @@ namespace ExamSystem.Controllers
         public IActionResult GetAllResultsInEachExam()
         {
 
-            List<UserExamDTO> AllResults = context.StudentExams.Include(x => x.Exam).ToList();
+            List<UserExamDTO> AllResults = context.StudentExams.Include(s => s.Exam).Select(s=>new UserExamDTO()
+            {
+                UsersId= s.UsersId,
+                ExamId= s.ExamId,
+                score=s.score,
+                Exam=new ExamDto()
+                {
+                    Name=s.Exam.Name,
+                    TotalScore=s.Exam.TotalScore,
+                    Description =s.Exam.Description,
+                    Duration=s.Exam.Duration,
+                }
+            }
+                ).ToList();
             return Ok(AllResults);
         }
     }

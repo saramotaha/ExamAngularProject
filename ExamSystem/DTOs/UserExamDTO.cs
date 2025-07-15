@@ -13,7 +13,7 @@ namespace ExamSystem.DTOs
 
         public int ExamId { get; set; }
 
-        public virtual Exam? Exam { get; set; }
+        public  ExamDto Exam { get; set; }=new ExamDto();
 
         public int score { get; set; }
     }
