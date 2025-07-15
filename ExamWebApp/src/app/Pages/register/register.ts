@@ -15,6 +15,7 @@ export class Register {
   form!: FormGroup;
   successMessage = '';
   errorMessage = '';
+  router: any;
 
   constructor(private fb: FormBuilder, private registerService: RegisterService) {
     this.initializeForm();
@@ -25,7 +26,7 @@ private initializeForm(): void {
     Email: ['', [Validators.required, Validators.email]],
     Password: ['', [Validators.required, Validators.minLength(6)]],
     ConfirmPassword: ['', Validators.required],
-    role: ['Student']
+    role: ['student']
   });
 }
 
@@ -46,20 +47,19 @@ register(): void {
 
   console.log('Submitting:', userData); // Debug before sending
 this.registerService.registerUser(userData).subscribe({
-  next: (response) => {
-    if (response.success) {
-      this.successMessage = response.message;
-      console.log('Registered user:', response.user);
-      this.form.reset({ role: 'Student' });
-    } else {
-      this.errorMessage = response.message || 'Registration failed';
+    next: (res) => {
+      this.successMessage = res.message || 'Registration successful!';
+      this.errorMessage = '';
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 1500);
+    },
+    error: (err) => {
+      console.error('Registration error:', err);
+      this.errorMessage = err.message || 'Registration failed';
+      this.successMessage = '';
     }
-  },
-  error: (err) => {
-    this.errorMessage = err.message;
-    console.error('Registration error:', err);
-  }
-});
+  });
 
 }
 

@@ -35,26 +35,43 @@ export class RegisterService {
     );
   }
 
-  private handleError(error: HttpErrorResponse) {
-    let errorMessage = 'An unknown error occurred!';
-    
-    if (error.error instanceof ErrorEvent) {
-      // Client-side error
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      // Server-side error
-      if (error.status === 400) {
-        // Handle validation errors from ASP.NET
+private handleError(error: HttpErrorResponse) {
+  let errorMessage = 'An unknown error occurred!';
+  
+  if (error.error instanceof ErrorEvent) {
+    // Client-side error (e.g., network issue)
+    errorMessage = `Client error: ${error.error.message}`;
+  } else {
+    // Server-side error
+    switch (error.status) {
+      case 400:
+        // Handle ASP.NET validation errors
         if (error.error.errors) {
-          errorMessage = error.error.errors.map((err: any) => err.description).join(', ');
+          // Extract all error messages from the validation object
+          const validationErrors = error.error.errors;
+          errorMessage = Object.keys(validationErrors)
+            .map(key => `${key}: ${validationErrors[key].join(', ')}`)
+            .join(' | ');
+        } 
+        // Handle custom error messages (e.g., "Email already exists")
+        else if (error.error.message) {
+          errorMessage = error.error.message;
         } else {
-          errorMessage = error.error.message || 'Invalid request data';
+          errorMessage = 'Bad request. Please check your input.';
         }
-      } else if (error.status === 500) {
-        errorMessage = 'Server error occurred. Please try again later.';
-      }
+        break;
+
+      case 500:
+        errorMessage = 'Server error. Please try again later.';
+        break;
+
+      default:
+        errorMessage = `HTTP Error: ${error.status} - ${error.statusText}`;
     }
-    
-    return throwError(() => new Error(errorMessage));
   }
+  
+  return throwError(() => new Error(errorMessage));
+}
+
+
 }
