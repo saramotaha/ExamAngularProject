@@ -87,8 +87,9 @@ export class AddQuestion implements OnInit {
 
       console.log(this.QuestionBody);
       this.AddQues.AddQuestions(this.QuestionBody as IQuestion).subscribe({
-        next: () => {
-          this.router.navigate(['/Exam'])
+        next: (response) => {
+           console.log("Navigating to /Exam...");
+          this.router.navigate(['/Exam']);
 
         }
 

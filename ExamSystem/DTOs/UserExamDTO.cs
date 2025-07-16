@@ -10,10 +10,9 @@ namespace ExamSystem.DTOs
         public int UsersId { get; set; }
        
 
-
         public int ExamId { get; set; }
 
-        public  ExamDto Exam { get; set; }=new ExamDto();
+        public  ExamDto Exam { get; set; }
 
         public int score { get; set; }
     }

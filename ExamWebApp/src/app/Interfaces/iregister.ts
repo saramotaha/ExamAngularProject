@@ -1,8 +1,8 @@
 export interface IRegister {
 
-  name: string
-  email: string
-  passWord: string
-  confirmPassword: string
-  role: string
+  Name: string
+  Email: string
+  Password: string
+  ConfirmPassword: string
+  role: 'student'  // 'student' | 'teacher'
 }

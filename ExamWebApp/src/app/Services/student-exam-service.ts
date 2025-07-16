@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IStudentExam } from '../Interfaces/istudent-exam';
 import { Observable } from 'rxjs';
@@ -13,9 +13,16 @@ export class StudentExamService {
   BaseUrl: string = 'http://localhost:5026/api/StudentExam';
 
 
-  AddStudentExam(student: IStudentExam) :Observable<any> {
+  AddStudentExam(student: IStudentExam): Observable<any> {
+    const token = localStorage.getItem('token');
 
-   return this.http.post(`${this.BaseUrl}`, student);
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+
+  return this.http.post(`${this.BaseUrl}`, student, { headers });
+
+  //  return this.http.post(`${this.BaseUrl}`, student,{ headers });
 
   }
 

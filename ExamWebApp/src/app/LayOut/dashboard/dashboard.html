@@ -20,7 +20,7 @@
 
       <!-- Students Section -->
 
-      <div class="nav-item">
+      <div class="nav-item"  *ngIf="roleName !='teacher'">
         <a [routerLink]="['StudentScoreInHisExam']" class="nav-link">
           <div class="nav-icon">
             <i class="fas fa-users"></i>
@@ -57,7 +57,7 @@
           <span class="badge">24</span>
         </a>
       </div> -->
-      <div class="nav-item">
+      <div class="nav-item"   *ngIf="roleName=='teacher'">
         <a [routerLink]="['AddExam']"  class="nav-link">
           <div class="nav-icon">
             <i class="fas fa-user-plus"></i>
@@ -65,7 +65,7 @@
           <span class="nav-text">Add Exam</span>
         </a>
       </div>
-      <div class="nav-item">
+      <div class="nav-item" >
         <a [routerLink]="['Exam']" class="nav-link">
           <div class="nav-icon">
             <i class="fas fa-tasks"></i>
@@ -73,7 +73,7 @@
           <span class="nav-text">AllExams</span>
         </a>
       </div>
-      <div class="nav-item">
+      <div class="nav-item"   *ngIf="roleName=='teacher'">
         <a [routerLink]="['StudentsScores']" class="nav-link">
           <div class="nav-icon">
             <i class="fas fa-calendar-check"></i>

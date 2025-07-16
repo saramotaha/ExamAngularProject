@@ -41,7 +41,7 @@ public class QuestionController : ControllerBase
 
         var createdQuestion = await _questionService.CreateAsync(dto);
 
-        return Ok("correct rawan *_* ");
+        return Ok(new {message="done"});
     }
 
 

@@ -14,12 +14,12 @@
       <!-- Header -->
       <div class="row align-items-center mb-4 ">
         <div class="col-12 col-lg-6 ">
-          <h1 class=" page-title mb-3 mb-lg-0">
+          <h1 class="mb-3 mb-lg-0">
             <i class="fas fa-graduation-cap me-2"></i>
-            <span class="text-danger border-info">Exam Management</span>
+            Exam Management
           </h1>
         </div>
-        <div class="col-12 col-lg-6 text-lg-end text-black">
+        <div *ngIf="roleName=='teacher'" class="col-12 col-lg-6 text-lg-end text-black">
           <button  [routerLink]="['/AddExam']"    class=" btn btn-outline-primary btn-outline-dark create-btn ">
             <i class="fas fa-plus me-2"></i>
             <span>Create New Exam</span>
@@ -37,7 +37,7 @@
       <!-- Exam Card -->
        <div class="d-flex flex-wrap ">
         @for(item of Exams; track $index) {
-        <div class="row justify-content-around me-5">
+        <div class="row justify-content-between me-1 gx-3 gy-2 flex-nowrap col-4 " >
           <div class="col-12 ">
 
 
@@ -86,32 +86,33 @@
                         Advanced
                       </div> -->
 
-              <div class="row g-2">
-                <div class="col-4">
+              <div class="row g-2"  >
+                <div class="col-4" *ngIf="roleName=='teacher'">
                   <button class="btn btn-ou btn-view action-btn w-100">
                     <i class="fas fa-eye"></i>
                     View
                   </button>
                 </div>
-                <div class="col-4">
+                <div class="col-4" *ngIf="roleName=='teacher'">
                   <button class="btn btn-edit action-btn w-100">
                     <i class="fas fa-edit"></i>
                     Edit
                   </button>
                 </div>
-                <div class="col-4">
+                <div class="col-4" *ngIf="roleName =='teacher'">
                   <button  (click)="DeleteExam(item?.id??0)" class="btn btn-delete action-btn w-100" >
                     <i class="fas fa-trash"></i>
                     Delete
                   </button>
                 </div>
-                <div class="col-12">
+                <div class="col-12"  *ngIf="roleName =='teacher'">
                   <button  (click)="AddQuestion(item?.id??0)"     class="btn  btn-outline-secondary p-2 action-btn w-100" >
                     <i class="fas fa-add"></i>
                     Add Question
                   </button>
                 </div>
-                <div class="col-12">
+
+                <div class="col-12"  *ngIf="roleName !='teacher'">
                   <button  (click)="openExam(item?.id??0)" class="btn  btn-outline-secondary p-2 action-btn w-100" >
                     <i class="fas fa-box-open"></i>
                     show Exam

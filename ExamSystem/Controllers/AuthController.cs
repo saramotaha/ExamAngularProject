@@ -67,13 +67,13 @@ namespace ExamSystem.Controllers
                         Name = userDto.Name,
                         Email = userDto.Email,
                         UserName = userDto.Name,
-                        PasswordHash = userDto.PassWord,
+                        PasswordHash = userDto.Password,
                         
   
                     };
 
                    
-                    var identityResult =await userManager.CreateAsync(user, userDto.PassWord);
+                    var identityResult =await userManager.CreateAsync(user, userDto.Password);
 
                     await userManager.AddToRoleAsync(user, userDto.role);
 
@@ -92,6 +92,23 @@ namespace ExamSystem.Controllers
 
 
         }
+
+
+
+
+
+
+
+        [Authorize]
+        [HttpGet("check-role")]
+        public IActionResult GetUserRole()
+        {
+            var role = User.FindFirst(ClaimTypes.Role)?.Value;
+
+            return Ok(new { role });
+        }
+
+
 
 
 
@@ -117,7 +134,7 @@ namespace ExamSystem.Controllers
 
                             claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
                             claims.Add(new Claim(ClaimTypes.Name ,user.Name));
-                            claims.Add(new Claim(ClaimTypes.rol ,user.));
+                            //claims.Add(new Claim(ClaimTypes.R ,user.));
                             claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
                              var roles = await  userManager.GetRolesAsync(user);
 
