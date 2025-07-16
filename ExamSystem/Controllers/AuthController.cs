@@ -53,12 +53,51 @@ namespace ExamSystem.Controllers
 
    
 
+        //[HttpPost("register")]
+        //public async Task<IActionResult> Register(UserRegisterDto userDto)
+        //{
+
+        //    if(userDto!=null)
+        //    {
+
+        //        if(ModelState.IsValid)
+        //        {
+        //            AppUser user=new AppUser()
+        //            {
+        //                Name = userDto.Name,
+        //                Email = userDto.Email,
+        //                UserName = userDto.Name,
+        //                PasswordHash = userDto.PassWord,
+                        
+  
+        //            };
+
+                   
+        //            var identityResult =await userManager.CreateAsync(user, userDto.PassWord);
+
+        //            await userManager.AddToRoleAsync(user, userDto.role);
+
+
+        //            if(identityResult.Succeeded)
+        //            {
+        //                return Ok(new { message = "User registered successfully" });
+        //            }
+        //            return BadRequest(identityResult.Errors);
+        //        }
+
+        //    }
+
+        //    return BadRequest(new {error = "Invalid user data" });
+
+
+
+        //}
+
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserRegisterDto userDto)
         {
-
-            if(userDto!=null)
-            {
+            if (userDto == null || !ModelState.IsValid)
+                return BadRequest(new { success = false, error = "Invalid user data" });
 
                 if(ModelState.IsValid)
                 {
@@ -75,7 +114,7 @@ namespace ExamSystem.Controllers
                    
                     var identityResult =await userManager.CreateAsync(user, userDto.Password);
 
-                    await userManager.AddToRoleAsync(user, userDto.role);
+            await userManager.AddToRoleAsync(user, userDto.role);
 
 
                     if(identityResult.Succeeded)

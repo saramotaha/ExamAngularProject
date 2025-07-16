@@ -11,8 +11,11 @@ import { ShowStudentScores } from './Services/show-student-scores';
 import { StudentsScores } from './Pages/students-scores/students-scores';
 import { StudentScoreInHisExam } from './Pages/student-score-in-his-exam/student-score-in-his-exam';
 
+
+
 export const routes: Routes = [
   {path: '', redirectTo: "Login", pathMatch: "full" },
+  {path: 'Home',component:Home, pathMatch:"full"},
   {path: 'Login',component :Login, pathMatch:"full"},
   {path: 'Register',component :Register, pathMatch:"full"},
   {path: 'Exam',component :Exam, pathMatch:"full"},
@@ -22,4 +25,5 @@ export const routes: Routes = [
   {path: 'DashBoardHome',component :DashBoardHome, pathMatch:"full"},
   {path: 'StudentsScores',component :StudentsScores, pathMatch:"full"},
   {path: 'StudentScoreInHisExam',component :StudentScoreInHisExam, pathMatch:"full"},
+
 ];

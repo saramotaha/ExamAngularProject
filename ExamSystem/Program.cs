@@ -3,11 +3,12 @@ using ExamSystem.Repositories.Implementation;
 using ExamSystem.Repositories.Interfaces;
 using ExamSystem.Services.Implementation;
 using ExamSystem.Services.Interfaces;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using ExamSystem.Services.Mappers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,12 +29,16 @@ builder.Services.AddIdentity<AppUser, IdentityRole<int>>()
     .AddEntityFrameworkStores<ExamContext>()
     .AddDefaultTokenProviders();
 
+//// Identity services
+//builder.Services.AddIdentity<AppUser, IdentityRole>()
+//    .AddEntityFrameworkStores<ExamContext>()
+//    .AddDefaultTokenProviders();
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularApp", policy =>
     {
-        policy.WithOrigins("http://localhost:4200")
+        policy.WithOrigins("http://localhost:55918")
               .AllowAnyMethod()
               .AllowAnyHeader()
         .AllowCredentials();
@@ -43,7 +48,8 @@ builder.Services.AddCors(options =>
 
 
 
-builder.Services.AddAutoMapper(cfg => {
+builder.Services.AddAutoMapper(cfg =>
+{
 
     cfg.AddProfile<MappingConfig>();
 
@@ -77,10 +83,27 @@ builder.Services.AddAuthentication(options =>
 
     };
 
-   });
+});
 
 
 var app = builder.Build();
+
+//using (var scope = app.Services.CreateScope())
+//{
+//    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+//    string[] roles = { "Student", "Teacher" }; // Define your roles here
+
+//    foreach (var role in roles)
+//    {
+//        var exists = await roleManager.RoleExistsAsync(role);
+//        if (!exists)
+//        {
+//            await roleManager.CreateAsync(new IdentityRole(role));
+//        }
+//    }
+//}
+
+app.UseCors("AllowFrontend");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

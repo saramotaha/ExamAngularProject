@@ -1,3 +1,4 @@
+// In your IRegister interface file
 export interface IRegister {
 
   Name: string

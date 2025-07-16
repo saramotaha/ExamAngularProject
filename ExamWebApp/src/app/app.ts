@@ -12,6 +12,7 @@ import { Register } from "./Pages/register/register";
 @Component({
   selector: 'app-root',
   imports: [Dashboard, RouterOutlet],
+
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
