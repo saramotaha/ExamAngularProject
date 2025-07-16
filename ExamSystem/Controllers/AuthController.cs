@@ -99,6 +99,7 @@ namespace ExamSystem.Controllers
             if (userDto == null || !ModelState.IsValid)
                 return BadRequest(new { success = false, error = "Invalid user data" });
 
+
                 if(ModelState.IsValid)
                 {
                     AppUser user=new AppUser()
@@ -110,6 +111,16 @@ namespace ExamSystem.Controllers
                         
   
                     };
+
+            var user = new AppUser
+            {
+                Name = userDto.Name,
+                Email = userDto.Email,
+                UserName = userDto.Name
+            };
+
+            var identityResult = await userManager.CreateAsync(user, userDto.Password);
+
 
                    
                     var identityResult =await userManager.CreateAsync(user, userDto.Password);

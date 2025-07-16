@@ -15,4 +15,12 @@ export class RegisterService {
   constructor(private http: HttpClient) { }
 
 
+    return throwError(() => new Error(errorMessage));
+
+  }
+  
+  return throwError(() => new Error(errorMessage));
+}
+
+
 }
