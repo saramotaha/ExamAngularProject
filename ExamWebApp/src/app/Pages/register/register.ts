@@ -16,6 +16,7 @@ export class Register {
   form!: FormGroup;
   successMessage = '';
   errorMessage = '';
+  router: any;
 
   constructor(private fb: FormBuilder, private registerService: RegisterService  , private router: Router) {
     this.initializeForm();

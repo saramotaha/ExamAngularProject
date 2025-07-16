@@ -69,5 +69,11 @@ export class RegisterService {
     }
 
     return throwError(() => new Error(errorMessage));
+
   }
+  
+  return throwError(() => new Error(errorMessage));
+}
+
+
 }

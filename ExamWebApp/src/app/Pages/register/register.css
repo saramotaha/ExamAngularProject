@@ -4,6 +4,10 @@
   --gray-color: #64748B;
 }
 
+
+body {
+  background: linear-gradient(135deg, #0F172A, #1E293B);
+
 body {
   background: linear-gradient(135deg, #0F172A, #1E293B);
 }
@@ -267,6 +271,7 @@ body {
   align-items: center;
   padding: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 .container {
@@ -274,6 +279,16 @@ body {
   justify-content: center;
   width: 100%;
 }
+
+
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 
 .registration-form {
   padding: 40px 0;
@@ -513,6 +528,20 @@ select.form-control:focus + label {
 @media (max-width: 576px) {
   .registration-form form {
     padding: 30px 20px;
+  }
+
+  .form-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+  }
+
+  .btn-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
   }
 
   .form-icon {
