@@ -1,17 +1,8 @@
 
 
-          :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            --hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-        }
 
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: var(--primary-gradient);
-            min-height: 100vh;
-            padding: 40px 0;
-        }
+
+
 
 
         .main-container {
@@ -205,6 +196,10 @@
 
 
 
+
+        h1 {
+ color: #1e293b;
+}
 
 
 

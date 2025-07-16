@@ -4,5 +4,9 @@ export interface IRegister {
   Email: string
   Password: string
   ConfirmPassword: string
-  role: 'student'  // 'student' | 'teacher' 
+
+  role: 'student'  // 'student' | 'teacher'
+
+ 
+
 }

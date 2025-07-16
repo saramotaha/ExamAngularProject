@@ -31,7 +31,7 @@ export class ShowExam implements OnInit {
 
   constructor(private http: HttpClient, private questions: GetQuestionsOfExam , private route:ActivatedRoute  , private studentExam:StudentExamService , private examById:ExamService) { }
 
-
+  user!: any;
 
   ExamID!: number;
 
@@ -113,8 +113,11 @@ export class ShowExam implements OnInit {
 
 
  SubmitExam() {
-  const user = this.getUserDataFromToken();
-  if (!user || !this.responseBody || this.responseBody.length === 0) return;
+   this.user = this.getUserDataFromToken();
+      console.log(this.user['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']);
+      console.log(this.user);
+
+  if (!this.user || !this.responseBody || this.responseBody.length === 0) return;
 
   console.log("User Answers:", this.CorrectAnswer);
 
@@ -133,15 +136,15 @@ export class ShowExam implements OnInit {
     }
   }
 
-  console.log("Total Score:", this.sum);
+   console.log("Total Score:", this.sum);
 
-  // ✅ نجيب بيانات الامتحان بعد ما نحسب الدرجة
-  this.examById.GetExamsOfUser(this.ExamID).subscribe({
-    next: (exam) => {
+
+   this.examById.GetExamsOfUser(this.ExamID).subscribe({
+     next:(exam:IExam) => {
       const studentExam: IStudentExam = {
         score: this.sum,
         examId: this.ExamID,
-        usersId: user.id,
+        usersId: this.user['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'],
         exam: {
           name: exam.name,
           description: exam.description,
@@ -152,6 +155,8 @@ export class ShowExam implements OnInit {
 
       this.studentExam.AddStudentExam(studentExam).subscribe({
         next: () => {
+          console.log(exam);
+
           console.log("✅ Exam Submitted Successfully!");
           alert("Exam Submitted Successfully!");
         },

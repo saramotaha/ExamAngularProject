@@ -99,6 +99,19 @@ namespace ExamSystem.Controllers
             if (userDto == null || !ModelState.IsValid)
                 return BadRequest(new { success = false, error = "Invalid user data" });
 
+
+                if(ModelState.IsValid)
+                {
+                    AppUser user=new AppUser()
+                    {
+                        Name = userDto.Name,
+                        Email = userDto.Email,
+                        UserName = userDto.Name,
+                        PasswordHash = userDto.Password,
+                        
+  
+                    };
+
             var user = new AppUser
             {
                 Name = userDto.Name,
@@ -108,24 +121,45 @@ namespace ExamSystem.Controllers
 
             var identityResult = await userManager.CreateAsync(user, userDto.Password);
 
-            if (!identityResult.Succeeded)
-                return BadRequest(new { success = false, errors = identityResult.Errors });
+
+                   
+                    var identityResult =await userManager.CreateAsync(user, userDto.Password);
 
             await userManager.AddToRoleAsync(user, userDto.role);
 
-            return Ok(new
-            {
-                success = true,
-                message = "User registered successfully",
-                user = new
-                {
-                    user.Id,
-                    user.Name,
-                    user.Email,
-                    role = userDto.role
+
+                    if(identityResult.Succeeded)
+                    {
+                        return Ok(new { message = "User registered successfully" });
+                    }
+                    return BadRequest(identityResult.Errors);
                 }
-            });
+
+            }
+
+            return BadRequest(new {error = "Invalid user data" });
+
+
+
         }
+
+
+
+
+
+
+
+        [Authorize]
+        [HttpGet("check-role")]
+        public IActionResult GetUserRole()
+        {
+            var role = User.FindFirst(ClaimTypes.Role)?.Value;
+
+            return Ok(new { role });
+        }
+
+
+
 
 
         [HttpPost("login")]
@@ -150,6 +184,7 @@ namespace ExamSystem.Controllers
 
                             claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
                             claims.Add(new Claim(ClaimTypes.Name ,user.Name));
+                            //claims.Add(new Claim(ClaimTypes.R ,user.));
                             claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
                              var roles = await  userManager.GetRolesAsync(user);
 

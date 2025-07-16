@@ -1,4 +1,3 @@
-
 <div class="container justify-content-center d-flex">
   <div class="registration-form">
     <form [formGroup]="form" (ngSubmit)="register()">
@@ -11,6 +10,7 @@
       <!-- Username Field -->
       <div class="form-floating mb-4">
         <i class="fas fa-user"></i>
+
         <input
           id="username"
           type="text"
@@ -18,6 +18,7 @@
           placeholder="Username"
           formControlName="Name"
         />
+
         <label for="username">Username</label>
         <div class="error-message" *ngIf="form.get('Name')?.touched && form.get('Name')?.invalid">
           Name is required
@@ -27,6 +28,7 @@
       <!-- Email Field -->
       <div class="form-floating mb-4">
         <i class="fas fa-envelope"></i>
+
         <input
           id="email"
           type="email"
@@ -34,6 +36,7 @@
           placeholder="Email"
           formControlName="Email"
         />
+
         <label for="email">Email Address</label>
         <div class="error-message" *ngIf="form.get('Email')?.touched && form.get('Email')?.invalid">
           <div *ngIf="form.get('Email')?.errors?.['required']">Email is required</div>
@@ -44,6 +47,8 @@
       <!-- Password Field -->
       <div class="form-floating mb-4">
         <i class="fas fa-lock"></i>
+
+
         <input
           id="password"
           type="password"
@@ -51,6 +56,7 @@
           placeholder="Password"
           formControlName="Password"
         />
+
         <label for="password">Password</label>
         <div class="error-message" *ngIf="form.get('Password')?.touched && form.get('Password')?.invalid">
           Password is required
@@ -60,6 +66,7 @@
       <!-- Confirm Password Field -->
       <div class="form-floating mb-4">
         <i class="fas fa-lock"></i>
+
         <input
           id="confirmPassword"
           type="password"
@@ -67,11 +74,14 @@
           placeholder="Confirm Password"
           formControlName="ConfirmPassword"
         />
+
         <label for="confirmPassword">Confirm Password</label>
         <div class="error-message" *ngIf="form.get('ConfirmPassword')?.touched && form.get('ConfirmPassword')?.invalid">
           Please confirm your password
         </div>
+
         <div class="error-message" *ngIf="form.get('Password')?.value !== form.get('ConfirmPassword')?.value && form.get('ConfirmPassword')?.touched">
+
           Passwords don't match
         </div>
       </div>

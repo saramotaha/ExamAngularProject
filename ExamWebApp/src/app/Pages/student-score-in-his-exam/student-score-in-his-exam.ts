@@ -34,6 +34,8 @@ export class StudentScoreInHisExam  implements OnInit{
 
 
     this.UserName = user['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+    console.log(this.UserName);
+    console.log(user['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']);
 
 
 

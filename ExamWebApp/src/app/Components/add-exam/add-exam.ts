@@ -4,6 +4,7 @@ import { ExamService } from '../../Services/exam-service';
 import { log } from 'node:console';
 import { IExam } from '../../Interfaces/iexam';
 import { HttpBackend, HttpContext } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-exam',
@@ -13,7 +14,7 @@ import { HttpBackend, HttpContext } from '@angular/common/http';
 })
 export class AddExam {
 
-  constructor(private exam:ExamService){}
+  constructor(private exam:ExamService , private router:Router){}
 
   registerForm=new FormGroup({
 
@@ -32,6 +33,8 @@ export class AddExam {
       this.exam.AddExam(this.registerForm.value as IExam).subscribe({
         next: (response: any) => {
           console.log(response);
+           this.router.navigate(['/Exam']);
+
 
         }
       })

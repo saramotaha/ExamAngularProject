@@ -27,21 +27,28 @@ namespace ExamSystem.Controllers
         public async Task<IActionResult> AddStudentExam(UserExamDTO studentExam)
         {
 
-            var u = userManager.GetUserAsync(User);
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier); 
+
+            if (userIdClaim == null)
+                return Unauthorized("User ID not found in token.");
+
 
             studentExam = new UserExamDTO()
             {
+                Id=studentExam.Id,
                 ExamId = studentExam.ExamId,
-                UsersId = u.Id,
+                UsersId = int.Parse(userIdClaim.Value),
                 score=studentExam.score,
             };
 
 
             StudentExam student = new StudentExam()
             {
+
+                Id = studentExam.Id,
                 ExamId = studentExam.ExamId,
                 UsersId = studentExam.UsersId,
-                score= studentExam.score,
+                score = studentExam.score,
 
 
             };
@@ -49,7 +56,7 @@ namespace ExamSystem.Controllers
 
 
             context.StudentExams.Add(student);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
 
             return Ok("done");
 
@@ -59,30 +66,58 @@ namespace ExamSystem.Controllers
         }
 
 
-        [HttpGet("{id}")]
 
-        public IActionResult GetStudentExam(int id)
+        //[HttpGet("{id}")]
+
+        //public IActionResult GetStudentExam(int id)
+        //{
+
+        //    List<UserExamDTO> AllStudExams = context.StudentExams.Where(s => s.UsersId == id).Include(s=>s.Exam).Select(s=>new UserExamDTO()
+        //    {
+        //        ExamId = s.ExamId,
+        //        UsersId = s.UsersId,
+        //        score=s.score,
+        //        Exam=new ExamDto()
+        //        {
+        //            Name=s.Exam.Name,
+        //            Duration=s.Exam.Duration,
+        //            Description=s.Exam.Description,
+        //            TotalScore=s.score
+
+        //        }
+        //    }).ToList();
+
+
+        //    return Ok(AllStudExams);
+        //}
+
+
+
+
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetStudentExam(int userId)
         {
-
-            List<UserExamDTO> AllStudExams = context.StudentExams.Where(s => s.UsersId == id).Include(s=>s.Exam).Select(s=>new UserExamDTO()
-            {
-                ExamId = s.ExamId,
-                UsersId = s.UsersId,
-                score=s.score,
-                Exam=new ExamDto()
+            var studentExams = await context.StudentExams
+                .Where(s => s.UsersId == userId)
+                .Include(s => s.Exam)
+                .Select(s => new UserExamDTO
                 {
-                    Name=s.Exam.Name,
-                    Duration=s.Exam.Duration,
-                    Description=s.Exam.Description,
-                    TotalScore=s.score
-                    
-                }
-            }).ToList();
+                    Id = s.Id,
+                    UsersId = s.UsersId,
+                    ExamId = s.ExamId,
+                    score = s.score,
+                    Exam = new ExamDto
+                    {
+                        Name = s.Exam.Name,
+                        Duration = s.Exam.Duration,
+                        Description = s.Exam.Description,
+                        TotalScore = s.Exam.TotalScore // Changed from s.score to s.Exam.TotalScore
+                    }
+                })
+                .ToListAsync();
 
-
-            return Ok(AllStudExams);
+            return Ok(studentExams);
         }
-
 
 
 
