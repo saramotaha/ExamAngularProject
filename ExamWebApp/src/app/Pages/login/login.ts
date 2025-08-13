@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { Router } from 'express';
+import {  Route, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { LoginService } from '../../Services/login-service';
 import { FormControl, FormControlName, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -13,7 +12,7 @@ import { FormControl, FormControlName, FormGroup, FormsModule, ReactiveFormsModu
 })
 export class Login implements OnInit {
 
-  constructor(private login: LoginService) { }
+  constructor( private router:Router, private login: LoginService ) { }
   loginForm! : FormGroup;
 
   ngOnInit(): void {
@@ -43,6 +42,9 @@ export class Login implements OnInit {
 
           console.log(response.token);
           localStorage.setItem("token", response.token);
+          this.router.navigate(['/Dashboard']);
+
+
 
         },
 

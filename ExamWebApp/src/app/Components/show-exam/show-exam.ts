@@ -52,11 +52,22 @@ export class ShowExam implements OnInit {
     next: (response) => {
       this.responseBody = response;
       this.CorrectAnswer = new Array(this.responseBody.length).fill('');
+
+      // this.responseBody = response;
+      //   console.log(response);
+      //   this.CorrectAnswer = new Array(this.responseBody.length).fill('');
+
+        this.choices = response.choices
     },
     error: (err) => {
       console.error("❌ Error loading questions:", err);
     }
   });
+
+
+
+
+
 }
 
 
@@ -74,14 +85,14 @@ export class ShowExam implements OnInit {
 
 
 
-        this.responseBody = response;
-        console.log(response);
-        this.CorrectAnswer = new Array(this.responseBody.length).fill('');
+        // this.responseBody = response;
+        // console.log(response);
+        // this.CorrectAnswer = new Array(this.responseBody.length).fill('');
 
-        this.choices = response.choices
+        // this.choices = response.choices
 
-      }
-    });
+      // }
+    // });
 
 
 
@@ -105,7 +116,7 @@ export class ShowExam implements OnInit {
 
 
 
-  }
+  // }
 
 
 
@@ -175,86 +186,6 @@ export class ShowExam implements OnInit {
 
 
 
-
-  SubmitExam() {
-
-
-
-
-
-
-    if(this.responseBody.length > 0) {
-
-      //var answer=
-       console.log(this.CorrectAnswer);
-      for (let index = 0; index < this.responseBody.length; index++) {
-
-
-        for (let i = 0; i < this.responseBody[index].choices.length; i++) {
-
-
-          // let x =this.responseBody[index].
-
-
-          console.log(this.responseBody[index].text);
-
-          let x = this.CorrectAnswer[index];
-
-          if(x==this.responseBody[index].choices.find(q=>q.isCorrect==true)?.answerText)
-          // console.log(this.responseBody[index].choices[i].isCorrect);
-          {
-
-            console.log("done");
-
-            this.sum += this.responseBody[index].degree;
-
-
-             this.studExam = {
-              score: this.sum,
-              examId: this.responseBody[index].examId,
-              usersId:4
-
-
-            }
-
-
-
-
-            this.studentExam.AddStudentExam(this.studExam).subscribe({
-              next: (response) => {
-                console.log("Add");
-
-              }
-            })
-
-           }
-
-          else {
-                 console.log("fail");
-                 }
-
-
-
-
-        }
-
-      // let x = this.CorrectAnswer[index];
-
-      // if (x == this.responseBody[index].choices.find(x => x.isCorrect == true)?.answerText) {
-
-      //   this.sum += this.responseBody[index].degree;
-
-      // }
-
-
-    }
-
-    console.log(this.sum);
-
-    }
-
-
-  }
 
 
 

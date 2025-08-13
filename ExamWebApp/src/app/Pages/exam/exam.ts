@@ -56,6 +56,7 @@ export class Exam implements OnInit{
     this.exam.GetAllExams().subscribe({
       next: (response) => {
         this.Exams = response as IExam[];
+        this.CDR.detectChanges();
         console.log(this.Exams);
 
       }
@@ -73,8 +74,10 @@ export class Exam implements OnInit{
 
 
 
-          this.Exams = this.Exams.filter(e => e.id !== id);
-           this.router.navigate(['/Exam']);
+          // this.Exams = this.Exams.filter(e => e.id !== id);
+          this.AllExams();
+          this.router.navigate(['/Dashboard/Exam']);
+          this.CDR.detectChanges();
 
 
 
@@ -88,7 +91,7 @@ export class Exam implements OnInit{
 
 
   openExam( examId:number) {
-    this.router.navigate([`/ShowExam/${examId}`]);
+    this.router.navigate([`/Dashboard/ShowExam/${examId}`]);
   }
 
 
@@ -105,7 +108,7 @@ export class Exam implements OnInit{
   this.ExamId=examId;
     // window.location.reload();
 
-    this.router.navigate([`/AddQuestion/${this.ExamId}`]);
+    this.router.navigate([`/Dashboard/AddQuestion/${this.ExamId}`]);
 
   }
 

@@ -33,7 +33,7 @@ export class AddExam {
       this.exam.AddExam(this.registerForm.value as IExam).subscribe({
         next: (response: any) => {
           console.log(response);
-           this.router.navigate(['/Exam']);
+           this.router.navigate(['/Dashboard/Exam']);
 
 
         }

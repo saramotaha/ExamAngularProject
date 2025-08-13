@@ -20,7 +20,7 @@
           </h1>
         </div>
         <div *ngIf="roleName=='teacher'" class="col-12 col-lg-6 text-lg-end text-black">
-          <button  [routerLink]="['/AddExam']"    class=" btn btn-outline-primary btn-outline-dark create-btn ">
+          <button  [routerLink]="['/Dashboard/AddExam']"    class=" btn btn-outline-primary btn-outline-dark create-btn ">
             <i class="fas fa-plus me-2"></i>
             <span>Create New Exam</span>
           </button>
@@ -87,13 +87,13 @@
                       </div> -->
 
               <div class="row g-2"  >
-                <div class="col-4" *ngIf="roleName=='teacher'">
+                <div class="col-4" *ngIf="roleName =='teacher'" >
                   <button class="btn btn-ou btn-view action-btn w-100">
                     <i class="fas fa-eye"></i>
                     View
                   </button>
                 </div>
-                <div class="col-4" *ngIf="roleName=='teacher'">
+                <div class="col-4" *ngIf="roleName =='teacher'" >
                   <button class="btn btn-edit action-btn w-100">
                     <i class="fas fa-edit"></i>
                     Edit
@@ -105,7 +105,7 @@
                     Delete
                   </button>
                 </div>
-                <div class="col-12"  *ngIf="roleName =='teacher'">
+                <div class="col-12" *ngIf="roleName =='teacher'"  >
                   <button  (click)="AddQuestion(item?.id??0)"     class="btn  btn-outline-secondary p-2 action-btn w-100" >
                     <i class="fas fa-add"></i>
                     Add Question

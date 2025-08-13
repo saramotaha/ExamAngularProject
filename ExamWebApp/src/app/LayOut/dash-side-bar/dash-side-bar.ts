@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { RoleService } from '../../Services/role-service';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { DashSideBar } from "../dash-side-bar/dash-side-bar";
-
-
 
 @Component({
-  selector: 'app-dashboard',
-  imports: [CommonModule, RouterOutlet, DashSideBar],
-  templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css'
+  selector: 'app-dash-side-bar',
+  imports: [RouterLink , CommonModule],
+  templateUrl: './dash-side-bar.html',
+  styleUrl: './dash-side-bar.css'
 })
-export class Dashboard implements OnInit {
+export class DashSideBar implements OnInit {
 
   roleName!: string;
 
@@ -39,7 +36,5 @@ export class Dashboard implements OnInit {
     // window.location.reload();
 
   }
-
-
 
 }

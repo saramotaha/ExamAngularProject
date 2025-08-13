@@ -1,0 +1,90 @@
+<div class="sidebar-brand">
+  <h3><i class="fas fa-graduation-cap me-2"></i>EDU</h3>
+  <p class="brand-text">Education Management System</p>
+</div>
+
+<div class="sidebar-nav">
+  <!-- Dashboard Section -->
+  <div class="sidebar-header" *ngIf="roleName =='teacher'">Main</div>
+  <div class="nav-item" *ngIf="roleName =='teacher'">
+    <a [routerLink]="['/Dashboard/DashBoardHome']" class="nav-link active">
+      <div class="nav-icon">
+        <i class="fas fa-home"></i>
+      </div>
+      <span class="nav-text">Dashboard</span>
+    </a>
+  </div>
+
+  <!-- Students Section -->
+
+  <div class="nav-item">
+
+
+    <div class="sidebar-header" *ngIf="roleName !='teacher'">Students</div>
+
+
+
+    <a [routerLink]="['/Dashboard/StudentScoreInHisExam']" class="nav-link"  *ngIf="roleName !='teacher'">
+      <div class="nav-icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <span class="nav-text"  >Student Result</span>
+    </a>
+
+
+
+
+
+    <div class="sidebar-header" *ngIf="roleName =='teacher'">Teachers</div>
+
+  
+    <div class="nav-item" *ngIf="roleName=='teacher'">
+      <a [routerLink]="['/Dashboard/AddExam']" class="nav-link">
+        <div class="nav-icon">
+          <i class="fas fa-user-plus"></i>
+        </div>
+        <span class="nav-text">Add Exam</span>
+      </a>
+    </div>
+    <div class="nav-item" >
+      <a [routerLink]="['/Dashboard/Exam']" class="nav-link">
+        <div class="nav-icon">
+          <i class="fas fa-tasks"></i>
+        </div>
+        <span class="nav-text">AllExams</span>
+      </a>
+    </div>
+    <div class="nav-item" *ngIf="roleName=='teacher'">
+      <a [routerLink]="['/Dashboard/StudentsScores']" class="nav-link">
+        <div class="nav-icon">
+          <i class="fas fa-calendar-check"></i>
+        </div>
+        <span class="nav-text">All Scores</span>
+      </a>
+
+    </div>
+
+
+
+
+
+  </div>
+
+
+
+  <div class="sidebar-header">System</div>
+
+
+  <div class="nav-item" (click)="logOut()">
+    <a class="nav-link">
+      <div class="nav-icon">
+        <i class="fas fa-sign-out-alt"></i>
+      </div>
+      <span class="nav-text">Logout</span>
+    </a>
+
+  </div>
+
+
+
+</div>
