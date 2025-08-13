@@ -90,7 +90,6 @@ export class AddQuestion implements OnInit {
         next: (response) => {
            console.log("Navigating to /Exam...");
           this.router.navigate(['/Exam']);
-
         }
 
       });

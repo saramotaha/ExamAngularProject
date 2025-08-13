@@ -11,7 +11,7 @@ import { Register } from "./Pages/register/register";
 
 @Component({
   selector: 'app-root',
-  imports: [Dashboard, RouterOutlet],
+  imports: [ RouterOutlet],
 
   templateUrl: './app.html',
   styleUrl: './app.css'
